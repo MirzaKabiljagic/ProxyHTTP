@@ -27,17 +27,17 @@ public class ProxyBuilder {
 	}
 	
 	public ProxyBuilder setContentReplacements(String[] replacements) {
-		putValuesToMap(replacements, contentReplacements);
+		putValuesToMap(replacements, contentReplacements, "^");
 		return this;
 	}
 	
 	public ProxyBuilder setHeaderReplacements(String[] replacements) {
-		putValuesToMap(replacements, headerReplacements);
+		putValuesToMap(replacements, headerReplacements, ":");
 		return this;
 	}
 	
 	public ProxyBuilder setRedirections(String[] redirections) {
-		putValuesToMap(redirections, this.redirections);
+		putValuesToMap(redirections, this.redirections, "^");
 		return this;
 	}
 	
@@ -61,10 +61,10 @@ public class ProxyBuilder {
 		return new Proxy(dumpPath, jsInjectPath, headerReplacements, sopSwitch, contentReplacements, redirections, stripDomains, mitmCertificatePath);
 	}
 	
-	private void putValuesToMap(String[] arr, Map<String, String> map) {
+	private void putValuesToMap(String[] arr, Map<String, String> map, String separator) {
 		if (arr != null) {
 			for (int i = 0; i < arr.length; i ++) {
-				String[] sp = arr[i].split(":");
+				String[] sp = arr[i].split(separator);
 				if (sp.length == 2)
 					map.put(sp[0], sp[1]);
 			}
