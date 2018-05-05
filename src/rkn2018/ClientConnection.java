@@ -9,7 +9,13 @@ import java.io.*;
 import java.net.UnknownHostException;
 
 
-public class ClientConnection {
+public class ClientConnection extends Thread{
+
+    public Socket clientSocket;
+    ClientConnection(Socket fromServer)
+    {
+        this.clientSocket = fromServer;
+    }
 
     public static void  startClient()
         throws IOException{

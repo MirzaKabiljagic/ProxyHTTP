@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.ServerSocket;
+
+
 
 
 public class ServerConnection {
@@ -27,21 +29,25 @@ public class ServerConnection {
                         new InputStreamReader(clientSocket.getInputStream()));
 
                
-            ){/*
-            String inputLine, outputLine;
+            ){
+            /*String inputLine, outputLine;
 
-            // Initiate conversation with client
-            HttpParser kkp = new HttpParser();
-            outputLine = kkp.processInput(null);
-            out.println(outputLine);
+             //Initiate conversation with client
+             HttpParser kkp = new HttpParser();
+             outputLine = kkp.processInput(null);
+             out.println(outputLine);
 
             while ((inputLine = in.readLine()) != null) {
                 outputLine = kkp.processInput(inputLine);
                 out.println(outputLine);
                 if (outputLine.equals("Quit"))
                     break;
+            }*/
+            while(true)
+            {
+
+                 (new ClientConnection(clientSocket)).start();
             }
-            */
         }
         catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "
