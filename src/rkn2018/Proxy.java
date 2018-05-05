@@ -3,6 +3,7 @@ package rkn2018;
 import java.util.List;
 import java.util.Map;
 
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -34,6 +35,8 @@ public class Proxy {
 	
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
+        ServerConnection serverConnect = new ServerConnection();
+        serverConnect.startServer();
 	}
 
 	public static void main(String[] args) throws Exception {
