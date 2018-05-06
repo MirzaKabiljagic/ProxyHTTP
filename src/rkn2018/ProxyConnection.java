@@ -1,6 +1,8 @@
 package rkn2018;
 //package test;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.io.*;
 import java.net.*;
 import java.io.BufferedReader;
@@ -14,12 +16,13 @@ import java.net.ServerSocket;
 
 
 
-public class ProxyConnection {
+public class ProxyConnection extends Thread {
 
 
     public void startServer()
     throws IOException{
 
+        /*
         int portNumber = 8080;
         String host = "127.0.0.1";
 
@@ -70,7 +73,7 @@ public class ProxyConnection {
 
                 int read_Bytes;
                 try{
-                    while((read_Bytes = fromServer.read(responseBuffer)) != -1){
+                        while((read_Bytes = fromServer.read(responseBuffer)) != -1){
                         try{
                             Thread.sleep(1);
                             System.out.println(read_Bytes+"To client ---->" + new String(requestBuffer,"UTF-8") + "<---");
@@ -95,13 +98,32 @@ public class ProxyConnection {
                 }
                 catch(IOException e){}
             }
+        }*/
+
+        int portNumber = 8080;
+        String host = "127.0.0.1";
+        ServerSocket SocketServer = new ServerSocket(portNumber);
+        try
+        {
+            while (true){
+                new MultiThreadConnection(SocketServer.accept()).start();
+            }
+
+        }
+        catch (IOException e)
+        {
+            System.err.println(e);
         }
 
 
 
+
+
+
+
+
+
     }
-
-
 
 
 
