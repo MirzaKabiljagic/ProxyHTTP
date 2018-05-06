@@ -1,4 +1,4 @@
 .idea/
-.class
-.bin/
-.iml
+*.class
+bin/
+*.iml
