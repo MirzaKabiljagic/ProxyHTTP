@@ -35,7 +35,7 @@ public class Proxy {
 	
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
-        ServerConnection serverConnect = new ServerConnection();
+        ProxyConnection serverConnect = new ProxyConnection();
         serverConnect.startServer();
 	}
 
