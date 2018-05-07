@@ -101,8 +101,8 @@ public class ProxyConnection extends Thread {
         }*/
 
         int portNumber = 8080;
-        String host = "127.0.0.1";
         ServerSocket SocketServer = new ServerSocket(portNumber);
+        System.out.println("Server started :)");
         try
         {
             while (true){
