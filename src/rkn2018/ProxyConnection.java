@@ -18,15 +18,28 @@ import java.net.ServerSocket;
 
 public class ProxyConnection extends Thread {
 
+    private int portNumber = 8080;
+    private String host = "127.0.0.1";
+    private ServerSocket serverS;
+
+    ProxyConnection()
+    {
+        try{
+            startServer();
+        }
+        catch(IOException e)
+        {
+            System.out.print("Error occurred while trying to run the server \n");
+            e.printStackTrace();
+        }
+    }
+
 
     public void startServer()
     throws IOException{
+        System.out.println("Server is started");
 
-        /*
-        int portNumber = 8080;
-        String host = "127.0.0.1";
-
-        ServerSocket SocketServer = new ServerSocket(portNumber);
+        serverS = new ServerSocket(portNumber);
         final byte[] requestBuffer = new byte[1024];
         byte[] responseBuffer = new byte[4096];
 
@@ -36,13 +49,30 @@ public class ProxyConnection extends Thread {
             Socket server = null;
 
             try {
-                client = SocketServer.accept();
+
+                client = serverS.accept();
+
+                /*TODO part http parser*/
+                //initialise connection
+
+
+                Parser parse = new Parser();
+                try{
+
+                    parse.startParse(client);
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
 
                 final InputStream fromClient = client.getInputStream();
                 final OutputStream toClient = client.getOutputStream();
 
                 try {
-                    server = new Socket(host,portNumber);
+                    //host from http parser
+
+                    server = new Socket(parse.getHost(), 80);
                 }
                 catch (IOException e)
                 {
@@ -55,7 +85,14 @@ public class ProxyConnection extends Thread {
                 final InputStream fromServer = server.getInputStream();
                 final OutputStream toServer = server.getOutputStream();
 
-                new Thread() {
+                /* http header parsed*/
+                String headerHTTP = parse.getMethod() + " " + parse.getUrl() + " " +  parse.getVersion() + "\r\n"
+                        + "Host: " + parse.getHost() + "\r\n"
+                        + "Connection: keep-alive " + "\r\n"
+                        + "\r\n";
+
+
+                Thread thread = new Thread(){
                     public void run() {
                         int readBytes;
                         try{
@@ -68,9 +105,11 @@ public class ProxyConnection extends Thread {
                         catch (IOException e) {}
                         try{toServer.close();} catch(IOException e){}
                     }
-                }
-                .start();
+                };
 
+                toServer.write(headerHTTP.getBytes());
+
+                thread.start();
                 int read_Bytes;
                 try{
                         while((read_Bytes = fromServer.read(responseBuffer)) != -1){
@@ -98,29 +137,7 @@ public class ProxyConnection extends Thread {
                 }
                 catch(IOException e){}
             }
-        }*/
-
-        int portNumber = 8080;
-        ServerSocket SocketServer = new ServerSocket(portNumber);
-        System.out.println("Server started :)");
-        try
-        {
-            while (true){
-                new MultiThreadConnection(SocketServer.accept()).start();
-            }
-
         }
-        catch (IOException e)
-        {
-            System.err.println(e);
-        }
-
-
-
-
-
-
-
 
 
     }

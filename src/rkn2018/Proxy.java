@@ -32,11 +32,12 @@ public class Proxy {
 		this.stripDomains = stripDomains;
 		this.mitmCertificatePath = mitmCertificatePath;
 	}
-	
+
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
-        ProxyConnection serverConnect = new ProxyConnection();
-        serverConnect.startServer();
+        //ProxyConnection serverConnect = new ProxyConnection();
+        //serverConnect.startServer();
+		ProxyConnection proxyConnection = new ProxyConnection();
 	}
 
 	public static void main(String[] args) throws Exception {
