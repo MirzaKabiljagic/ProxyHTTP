@@ -60,16 +60,21 @@ public class Parser {
                     method = "GET";
 
                 if(arrayParser[0].equals("CONNECT"))
+                {
                     method = "CONNECT";
+                    host = arrayParser[1];
+                    findCertainParameter = false;
+                }
+
 
                 if(arrayParser[2].equals("HTTP/1.1"))
                     version = "HTTP/1.1";
 
                 url = arrayParser[1];
 
-                System.out.println(method);
-                System.out.println(version);
-                System.out.println(url);
+                //System.out.println(method);
+                //System.out.println(version);
+                //System.out.println(url);
             }
             else
             {
