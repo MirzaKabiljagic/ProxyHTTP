@@ -1,31 +1,36 @@
 package rkn2018;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
+import java.io.*;
+import java.util.HashMap;
+
 
 public class Parser {
     private String url;
     private String method;
     private String version;
     private String host;
+    private String helper_response;
 
-    Parser()
-    {
+    private boolean parsed = false;
+    private boolean isParsed = false;
 
+    private HashMap<String, String> header_response;
+
+    //constructor initialise helper hashmap and string
+    Parser() {
+
+        header_response = new HashMap<>();
+        helper_response = "";
     }
 
+
+    //getters
     public String getUrl()
     {
         return  url;
     }
 
-    public String getMethod()
-    {
-        return method;
-
-    }
+    public String getMethod() { return method; }
 
     public String getVersion()
     {
@@ -36,67 +41,86 @@ public class Parser {
         return host;
     }
 
-    public void startParse(Socket ws)
+    //check if data is parsed
+    public boolean getParsed() { return parsed; }
+
+    public boolean isParsed(){ return isParsed; }
+
+    //get parsed values
+    public String getResponseValues(String name)
+    {
+        return header_response.get(name);
+    }
+
+
+    public void checkEnd(byte[] inputClient_)
+    {
+        if(inputClient_[inputClient_.length - 1] == 10 &&
+                inputClient_[inputClient_.length - 2] == 13 &&
+                inputClient_[inputClient_.length - 3] == 10 &&
+                inputClient_[inputClient_.length - 4] == 13)
+        {
+            parsed = true;
+        }
+        else
+        {
+            parsed = false;
+        }
+    }
+
+    public void startParse(byte[] inputClient)
             throws IOException
     {
-
-        BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(ws.getInputStream()));
-        String input;
-        String newline = "\r\n";
-        String helper = "";
-        boolean findCertainParameter = true;
-        int count = 0;
-
-        while(findCertainParameter)
+        //check whether data is already parsed
+        if(isParsed() == false)
         {
-            input = inputBuffer.readLine();
-            helper = input + newline;
+            BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputClient)));
+            String input;
+            String newline = "\r\n";
+            int count = 0;
+            String[] arrayParser;
 
-            if(count == 0)
-            {
-                String [] arrayParser = input.split(" ");
 
-                if(arrayParser[0].equals("GET"))
-                    method = "GET";
+            while((input = inputBuffer.readLine()) != null && !input.isEmpty()) {
+                helper_response += input + newline;
 
-                if(arrayParser[0].equals("CONNECT"))
+                if(count == 0)
                 {
-                    method = "CONNECT";
-                    host = arrayParser[1];
-                    findCertainParameter = false;
+                    arrayParser = input.split(" ");
+
+                    if(arrayParser[0].equals("GET"))
+                        method = "GET";
+
+                    if(arrayParser[0].equals("CONNECT"))
+                        method = "CONNECT";
+
+                    //System.out.println(method);
+                    //System.out.println(version);
+                    //System.out.println(url);
+                }
+                else
+                {
+                    arrayParser = input.split(": ");
+                    //System.out.println("jedan" + helperString[0]);
+                    //System.out.println("dva" + helperString[1]);
+                    if(arrayParser.length == 2)
+                        header_response.put(arrayParser[0], arrayParser[1]);
+                    else
+                        System.out.println("Size of arrayParser bigger than 2 and is: " + arrayParser.length);
+                    //System.out.println(host);
                 }
 
+                count ++;
 
-                if(arrayParser[2].equals("HTTP/1.1"))
-                    version = "HTTP/1.1";
-
-                url = arrayParser[1];
-
-                //System.out.println(method);
-                //System.out.println(version);
-                //System.out.println(url);
             }
-            else
-            {
-                String []helperString = input.split("Host: ");
-                //System.out.println("jedan" + helperString[0]);
-                //System.out.println("dva" + helperString[1]);
-                host = helperString[1];
-                findCertainParameter = false;
-                System.out.println(host);
-            }
+            helper_response += newline;
+            isParsed = true;
 
-            count ++;
+            checkEnd(inputClient);
         }
-
-
-
-
-
-
-
-
     }
+
+
 };
 
 
