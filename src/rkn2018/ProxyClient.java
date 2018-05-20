@@ -3,7 +3,7 @@ package rkn2018;
 import java.io.*;
 import java.net.Socket;
 import java.util.Arrays;
-
+import java.util.HashMap;
 
 
 class ProxyClient extends Thread {
@@ -129,8 +129,10 @@ class ProxyClient extends Thread {
         try
         {
             //host for server socket
-            String host = parse.getResponseValues("Host");
-            String host_temp = host;
+            HashMap<Integer, String> map = new HashMap<>();
+            map = parse.valuesFromField();
+
+            String host = map.get(1);
             if(host == null)
             {
                 System.out.println("Host is null");
@@ -138,7 +140,7 @@ class ProxyClient extends Thread {
                 closeConnection();
                 return;
             }
-            host_temp.replaceAll("\\s+", "");
+
             //HTTP
             if(parse.getMethod().equals("GET"))
             {
@@ -154,8 +156,8 @@ class ProxyClient extends Thread {
             //HTTPS
             if(parse.getMethod().equals("CONNECT"))
             {
-                System.out.println(host_temp);
-                String new_host = host_temp.split(":")[0];
+                System.out.println(host);
+                String new_host = host.split(":")[0];
                 System.out.println("Host https is: " +  new_host);
 
                 SocketServer = new Socket(new_host, 443);
@@ -293,3 +295,4 @@ class ProxyClient extends Thread {
 
 
 }
+

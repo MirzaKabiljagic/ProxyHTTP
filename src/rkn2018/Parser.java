@@ -119,6 +119,37 @@ public class Parser {
             checkEnd(inputClient);
         }
     }
+    public  HashMap<Integer, String>valuesFromField()
+    {
+        HashMap<Integer, String> hash_map = new HashMap<>();
+        String host = getResponseValues("Host");
+        if(host != null)
+            host.replaceAll("\\s+", "");
+        hash_map.put(1, host);
+
+        String connection = getResponseValues("Connection");
+        if(connection != null)
+             connection.replaceAll("\\s+", "");
+        hash_map.put(2, connection);
+
+        String content_encoding = getResponseValues("Content-Encoding");
+        if(content_encoding != null)
+            content_encoding.replaceAll("\\s+", "");
+        hash_map.put(3, connection);
+
+        String content_type = getResponseValues("Content-Type");
+        if(content_type != null)
+            content_type.replaceAll("\\s+", "");
+        hash_map.put(4, content_type);
+
+        String content_length = getResponseValues("Content-Length");
+        if(content_length != null)
+            content_length.replaceAll("\\s+", "");
+        hash_map.put(5, content_length);
+
+
+        return hash_map;
+    }
 
 
 };
