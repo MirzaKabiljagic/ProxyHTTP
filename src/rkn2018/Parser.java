@@ -72,7 +72,7 @@ public class Parser {
             throws IOException
     {
         //check whether data is already parsed
-        if(isParsed() == false)
+        if(!isParsed())
         {
             BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputClient)));
             String input;
@@ -93,6 +93,8 @@ public class Parser {
 
                     if(arrayParser[0].equals("CONNECT"))
                         method = "CONNECT";
+                  //  System.out.println("Hocemo da isprintamo array" + arrayParser[0].toString());
+
 
                     //System.out.println(method);
                     //System.out.println(version);
@@ -101,8 +103,6 @@ public class Parser {
                 else
                 {
                     arrayParser = input.split(": ");
-                    //System.out.println("jedan" + helperString[0]);
-                    //System.out.println("dva" + helperString[1]);
                     if(arrayParser.length == 2)
                         header_response.put(arrayParser[0], arrayParser[1]);
                     else

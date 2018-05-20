@@ -130,36 +130,50 @@ class ProxyClient extends Thread {
         {
             //host for server socket
             String host = parse.getResponseValues("Host");
+            String host_temp = host;
             if(host == null)
             {
                 System.out.println("Host is null");
+                //TODO: check if we need to close connection or something else???
                 closeConnection();
                 return;
             }
-
-            /*if(parse.getMethod().equals("CONNECT"))
+            host_temp.replaceAll("\\s+", "");
+            //HTTP
+            if(parse.getMethod().equals("GET"))
             {
 
-                String host = parse.getHeaderValues("Host").split(":")[0];
-                //System.out.println("Host2 is: " +  host);
-                SocketServer = new Socket(host, 443);
+                //create socket server with host and default port 80
+                System.out.println("Host http is: " +  host.split(":")[0]);
+                SocketServer = new Socket(host, 80);
+                setTimeOut(SocketServer);
+
+                serverConnected = true;
+            }
+
+            //HTTPS
+            if(parse.getMethod().equals("CONNECT"))
+            {
+                System.out.println(host_temp);
+                String new_host = host_temp.split(":")[0];
+                System.out.println("Host https is: " +  new_host);
+
+                SocketServer = new Socket(new_host, 443);
                 DataOutputStream out = new DataOutputStream(toClient);
                 out.writeBytes("HTTP/1.1 200 OK\r\n\r\n");
                 out.flush();
                 connected = true;
                 serverConnected = true;
-            }*/
-            //else
-            //{
-                //String host = parse.getHeaderValues("Host");
-                //System.out.println("Host is: " +  host);
+            }
+            //TODO: i am not sure but stop or something else???
+            else
+            {
+                System.out.println("Making default server port 80");
+                //TODO: maybe
+                //SocketServer = new Socket( host.split(":")[0], 80);
 
-            //create socket server with host and default port 80
-            SocketServer = new Socket(host, 80);
-            setTimeOut(SocketServer);
+            }
 
-            //serverConnected = true;
-            //}
         }
         catch (IOException e)
         {
@@ -168,13 +182,13 @@ class ProxyClient extends Thread {
             //serverConnected = false;
         }
 
-        System.out.println("Socket is created");
 
         //input and output stream of server created with server socket
         try
         {
             toServer = SocketServer.getOutputStream();
             fromServer = SocketServer.getInputStream();
+
         }
         catch (IOException e)
         {
@@ -183,9 +197,41 @@ class ProxyClient extends Thread {
             return;
         }
 
+
         //initialise server thread and start
         server = new ProxyServer(fromServer, toClient);
         server.start();
+
+
+
+        try{
+            toServer.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
+            toServer.flush();
+        }
+        catch (IOException e)
+        {
+            System.out.println("It is not possible to send data to server");
+            server.interrupt();
+            closeConnection();
+            return;
+        }
+        //join thread
+        try
+        {
+
+            if(server != null)
+                server.join();
+
+
+            closeConnection();
+            return;
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+            return;
+        }
+
 
         /*if(connected)
             continue;*/
@@ -208,31 +254,7 @@ class ProxyClient extends Thread {
             return;
         }*/
         //write to server
-        try
-        {
-            toServer.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
-            toServer.flush();
-        }
-        catch (IOException e)
-        {
-            System.out.println("It is not possible to send data to server");
-            server.interrupt();
-            closeConnection();
-            return;
-        }
-        //join thread
-        try
-        {
-            if(server != null)
-                server.join();
 
-
-            closeConnection();
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
 
        /* parse = new Parser();
         outputStream.close();
