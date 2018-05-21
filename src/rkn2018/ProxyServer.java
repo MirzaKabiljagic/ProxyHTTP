@@ -20,7 +20,7 @@ public class ProxyServer extends Thread{
     //constructor for input and output stream
     ProxyServer(InputStream fromServer_, OutputStream toClient_)
     {
-        System.out.println("Make new proxy server, new thread. Input stream from server: " + fromServer_ + "Output stream to client: " + toClient_);
+        System.out.println("Calling constructor of server proxy. Input stream from server: " + fromServer_ + " Output stream to client: " + toClient_);
         this.fromServer = fromServer_;
         this.toClient = toClient_;
     }

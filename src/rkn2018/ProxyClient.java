@@ -18,7 +18,7 @@ class ProxyClient extends Thread {
     private Socket SocketClient;
     private Socket SocketServer;
 
-    private boolean serverConnected = false;
+   // private boolean serverConnected = false;
     private boolean connected = false;
 
     //empty constructor
@@ -32,7 +32,7 @@ class ProxyClient extends Thread {
     }
 
     //getter
-    public boolean getConnected(){ return connected; }
+ //   public boolean getConnected(){ return connected; }
 
     //timeout for sockets
     public void setTimeOut(Socket timeout_)
@@ -51,11 +51,11 @@ class ProxyClient extends Thread {
     public void closeConnection()
     {
         try{
-            if(server != null)
+           /* if(server != null)
             {
                 server.join();
 
-            }
+            }*/
             if(SocketClient != null)
             {
                 SocketClient.close();
@@ -103,12 +103,12 @@ class ProxyClient extends Thread {
                 outputStream.write(Arrays.copyOfRange(requestBuffer, 0, readBytes));
 
                 //check if we already connected to the server
-               /* if(connected)
+                if(connected)
                 {
                     toServer.write(requestBuffer, 0, readBytes);
                     toServer.flush();
                     continue;
-                }*/
+                }
 
                 byte[] parseArray = outputStream.toByteArray();
                 //Start parsing
@@ -136,7 +136,6 @@ class ProxyClient extends Thread {
             if(host == null)
             {
                 System.out.println("Host is null");
-                //TODO: check if we need to close connection or something else???
                 closeConnection();
                 return;
             }
@@ -149,8 +148,8 @@ class ProxyClient extends Thread {
                 System.out.println("Host http is: " +  host.split(":")[0]);
                 SocketServer = new Socket(host, 80);
                 setTimeOut(SocketServer);
-
-                serverConnected = true;
+                connected = true;
+          //      serverConnected = true;
             }
 
             //HTTPS
@@ -165,14 +164,14 @@ class ProxyClient extends Thread {
                 out.writeBytes("HTTP/1.1 200 OK\r\n\r\n");
                 out.flush();
                 connected = true;
-                serverConnected = true;
+           //     serverConnected = true;
             }
             //TODO: i am not sure but stop or something else???
             else
             {
-                System.out.println("Making default server port 80");
+                //System.out.println("Making default server port 80");
                 //TODO: maybe
-                SocketServer = new Socket( host.split(":")[0], 80);
+                //SocketServer = new Socket( host.split(":")[0], 80);
 
             }
 
@@ -181,14 +180,14 @@ class ProxyClient extends Thread {
         {
             System.out.println("Can not connect to certain host");
             closeConnection();
-            //serverConnected = false;
+       //     serverConnected = false;
         }
 
 
         //input and output stream of server created with server socket
         try
         {
-            System.out.println("Input out put stream try block");
+            System.out.println("Input/output stream! Output: " + SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
             toServer = SocketServer.getOutputStream();
             fromServer = SocketServer.getInputStream();
 
@@ -200,15 +199,8 @@ class ProxyClient extends Thread {
             return;
         }
 
-
-        //initialise server thread and start
-        System.out.println("Initialise server thread and start");
-        server = new ProxyServer(fromServer, toClient);
-        server.start();
-
-
-
-        try{
+        try
+        {
             System.out.println("Write and flush");
             toServer.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
             toServer.flush();
@@ -220,14 +212,23 @@ class ProxyClient extends Thread {
             closeConnection();
             return;
         }
+
+        //initialise server thread and start
+        System.out.println("Initialise server thread and start");
+        server = new ProxyServer(fromServer, toClient);
+        server.start();
+
+
         //join thread
         try
         {
-            System.out.println("Join thread. server" + server);
             if(server != null)
+            {
+                System.out.println("Start joining");
                 server.join();
+                System.out.println("Finish Joining!");
+            }
 
-            //TODO: should we close connection??
             System.out.println("Closing connection!");
             closeConnection();
             return;
