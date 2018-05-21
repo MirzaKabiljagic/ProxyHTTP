@@ -51,11 +51,11 @@ class ProxyClient extends Thread {
     public void closeConnection()
     {
         try{
-            /*if(server != null)
+            if(server != null)
             {
                 server.join();
 
-            }*/
+            }
             if(SocketClient != null)
             {
                 SocketClient.close();
@@ -172,7 +172,7 @@ class ProxyClient extends Thread {
             {
                 System.out.println("Making default server port 80");
                 //TODO: maybe
-                //SocketServer = new Socket( host.split(":")[0], 80);
+                SocketServer = new Socket( host.split(":")[0], 80);
 
             }
 
@@ -188,6 +188,7 @@ class ProxyClient extends Thread {
         //input and output stream of server created with server socket
         try
         {
+            System.out.println("Input out put stream try block");
             toServer = SocketServer.getOutputStream();
             fromServer = SocketServer.getInputStream();
 
@@ -201,12 +202,14 @@ class ProxyClient extends Thread {
 
 
         //initialise server thread and start
+        System.out.println("Initialise server thread and start");
         server = new ProxyServer(fromServer, toClient);
         server.start();
 
 
 
         try{
+            System.out.println("Write and flush");
             toServer.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
             toServer.flush();
         }
@@ -220,11 +223,12 @@ class ProxyClient extends Thread {
         //join thread
         try
         {
-
+            System.out.println("Join thread. server" + server);
             if(server != null)
                 server.join();
 
-
+            //TODO: should we close connection??
+            System.out.println("Closing connection!");
             closeConnection();
             return;
         }
