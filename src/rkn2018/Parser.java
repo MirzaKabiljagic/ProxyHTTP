@@ -11,6 +11,8 @@ public class Parser {
     private String host;
     private String helper_response;
 
+
+
     private boolean parsed = false;
     private boolean isParsed = false;
 
@@ -129,7 +131,9 @@ public class Parser {
 
         String connection = getResponseValues("Connection");
         if(connection != null)
+
              connection.replaceAll("\\s+", "");
+        System.out.println("da znamo gdje je"+connection);
         hash_map.put(2, connection);
 
         String content_encoding = getResponseValues("Content-Encoding");

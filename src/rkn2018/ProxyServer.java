@@ -49,8 +49,11 @@ public class ProxyServer extends Thread{
                 parse.startParse(parseArray);
 
                 //if whole data is parsed break
-                if (parse.getParsed() == true)
-                    break;
+                if (parse.getParsed() == true){
+                    String konekcija = parse.valuesFromField().get(2);
+                    if(konekcija != null && !konekcija.equals("keep-alive"))
+                        break;
+                }
 
                 //return if thread is interrupted
                 if(isInterrupted())

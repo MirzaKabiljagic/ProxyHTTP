@@ -115,8 +115,12 @@ class ProxyClient extends Thread {
                 parse.startParse(parseArray);
 
                 //break when whole request is parsed
-                if (parse.getParsed() == true)
-                    break;
+                if (parse.getParsed() == true){
+                    String konekcija = parse.valuesFromField().get(2);
+                    if(konekcija != null && !konekcija.equals("keep-alive"))
+                        break;
+                }
+
             }
         }
         catch (IOException e)
