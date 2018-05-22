@@ -15,8 +15,6 @@ class ProxyClient extends Thread {
     private InputStream fromServer;
     private OutputStream toServer;
     private static final int SIZE_OF_BYTE = 4096;
-    private static final int HOST = 1;
-    private static final int CONNECTION = 2;
     private static final int TIMEOUT = 3000;
     private static final int OFF_TRIGGER = 0;
     private Socket SocketClient;
@@ -88,8 +86,7 @@ class ProxyClient extends Thread {
 
 
                 if (connected) {
-                    toServer.write(requestBuffer, 0, readBytes);
-                    toServer.flush();
+                    connectionCheck(toServer,readBytes,requestBuffer);
                     continue;
                 }
 
@@ -105,7 +102,7 @@ class ProxyClient extends Thread {
                             HashMap<Integer, String> map = new HashMap<>();
                             map = parse.valuesFromField();
 
-                            String host = map.get(HOST);
+                            String host = map.get(Parser.HOST);
                             if (host == null) {
                                 System.out.println("Host equals null");
                                 closeConnection();
@@ -169,8 +166,7 @@ class ProxyClient extends Thread {
                     closeConnection();
                     return;
                 }
-                String konekcija = parse.valuesFromField().get(CONNECTION);
-                if (konekcija != null && !konekcija.equals("keep-alive"))
+                if (statusCheck(parse) == true )
                     break;
 
                 parse = new Parser();
@@ -185,7 +181,27 @@ class ProxyClient extends Thread {
             closeConnection();
             return;
         }
-
         closeConnection();
     }
+
+
+
+    public static void connectionCheck(OutputStream toServer_,int readBytes_, byte[] requestBuffer_  ){
+        try{
+            toServer_.write(requestBuffer_, 0, readBytes_);
+            toServer_.flush();
+        }catch(IOException e){
+            System.out.println("Can't write data to server");
+            e.printStackTrace();
+        }
+    }
+    public static boolean statusCheck(Parser parse_){
+        String konekcija = parse_.valuesFromField().get(Parser.CONNECTION);
+        if (konekcija != null && !konekcija.equals("keep-alive"))
+            return true;
+        else
+            return false;
+    }
+
+
 }
