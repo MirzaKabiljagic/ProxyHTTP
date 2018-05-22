@@ -10,6 +10,7 @@ public class Parser {
     private String version;
     private String host;
     private String helper_response;
+    private static final int CONTENT_LENGHT = 5;
 
 
 
@@ -57,7 +58,13 @@ public class Parser {
 
     public void checkEnd(byte[] inputClient_)
     {
-        if(inputClient_[inputClient_.length - 1] == 10 &&
+        if(valuesFromField().get(CONTENT_LENGHT) != null){
+            int content_len = Integer.parseInt(valuesFromField().get(CONTENT_LENGHT));
+            if(content_len == inputClient_.length - headerSize()){
+                parsed = true;
+            }
+        }
+        else if(inputClient_[inputClient_.length - 1] == 10 &&
                 inputClient_[inputClient_.length - 2] == 13 &&
                 inputClient_[inputClient_.length - 3] == 10 &&
                 inputClient_[inputClient_.length - 4] == 13)
@@ -102,6 +109,10 @@ public class Parser {
                     //System.out.println(version);
                     //System.out.println(url);
                 }
+
+
+
+
                 else
                 {
                     arrayParser = input.split(": ");
@@ -111,6 +122,7 @@ public class Parser {
                         System.out.println("Size of arrayParser bigger than 2 and is: " + arrayParser.length);
                     //System.out.println(host);
                 }
+
 
                 count ++;
 
@@ -154,6 +166,15 @@ public class Parser {
 
         return hash_map;
     }
+
+    int headerSize(){
+        try{
+            return helper_response.getBytes("US-ASCII").length;
+        }catch(UnsupportedEncodingException e){
+            return -1;
+        }
+    }
+
 
 
 };
