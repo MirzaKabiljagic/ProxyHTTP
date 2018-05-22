@@ -18,17 +18,12 @@ class ProxyClient extends Thread {
     private static final int HOST = 1;
     private static final int CONNECTION = 2;
     private static final int TIMEOUT = 3000;
-
+    private static final int OFF_TRIGGER = 0;
     private Socket SocketClient;
     private Socket SocketServer;
 
     private boolean connected = false;
     private boolean serverConnection = false;
-
-
-    //empty constructor
-    ProxyClient() {
-    }
 
     //constructor with client Socket
     ProxyClient(Socket SocketClient_) {
@@ -103,7 +98,7 @@ class ProxyClient extends Thread {
 
                 //flag checking for parsing
                 if (parse.getParsed() == true) {
-                    if (!serverConnection) {
+                    if (serverConnection == false) {
 
                         try {
                             //host for server socket
@@ -123,8 +118,8 @@ class ProxyClient extends Thread {
                                 System.out.println("Host https is: " + new_host);
 
                                 SocketServer = new Socket(new_host, 443);
-                                SocketServer.setSoTimeout(20000);
-
+                                setTimeOut(SocketServer);
+                                //output response
                                 DataOutputStream out = new DataOutputStream(toClient);
                                 out.writeBytes("HTTP/1.1 200 OK\r\n\r\n");
                                 out.flush();
@@ -132,32 +127,33 @@ class ProxyClient extends Thread {
 
                             } else {
                                 System.out.println("Host http is: " + host.split(":")[0]);
-                                SocketServer = new Socket(host, 80);
+                                String new_host = host.split(":")[0];
+
+                                SocketServer = new Socket(new_host, 80);
                                 setTimeOut(SocketServer);
 
                             }
 
                         } catch (IOException e) {
-                            System.out.println("Can not connect to certain host");
+                            System.out.println("Connection can't be estabilished to host");
                             closeConnection();
                         }
                         try {
-                            System.out.println("Input/output stream! Output: " + SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
+                            System.out.println("Input/output stream! Output: " +
+                                                    SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
+
                             toServer = SocketServer.getOutputStream();
                             fromServer = SocketServer.getInputStream();
 
                         } catch (IOException e) {
-                            System.out.println("It is not possible to get data from server");
+                            System.out.println("Can't reach data from server");
                             closeConnection();
                             return;
                         }
-                        System.out.println("Initialise server thread and start");
+                        System.out.println("Init thread and start");
                         server = new ProxyServer(fromServer, toClient, connected);
                         server.start();
-
-
                     }
-
                     serverConnection = true;
                     if (connected) {
                         continue;
@@ -165,10 +161,10 @@ class ProxyClient extends Thread {
                 }
                 try {
                     System.out.println("Write and flush");
-                    toServer.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
+                    toServer.write(outputStream.toByteArray(), OFF_TRIGGER, outputStream.toByteArray().length);
                     toServer.flush();
                 } catch (IOException e) {
-                    System.out.println("It is not possible to send data to server");
+                    System.out.println("Can't reach data from server!");
                     server.interrupt();
                     closeConnection();
                     return;
@@ -185,7 +181,7 @@ class ProxyClient extends Thread {
         }
         catch(IOException e)
         {
-            System.out.println("It is not possible to read data from the client");
+            System.out.println("Not possible to streams from the client");
             closeConnection();
             return;
         }
