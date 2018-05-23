@@ -23,7 +23,7 @@ class ProxyClient extends Thread {
     private boolean connected = false;
     private boolean serverConnection = false;
 
-    //constructor with client Socket
+    //constructor with socket of client
     ProxyClient(Socket SocketClient_) {
 
         SocketClient = SocketClient_;
