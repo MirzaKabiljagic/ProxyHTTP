@@ -110,7 +110,7 @@ public class Parser {
     public  HashMap<Integer, String>valuesFromField()
     {
         HashMap<Integer, String> hash_map = new HashMap<>();
-        String host = getResponseValues("Host");
+        String host = getResponseValues("Host"); 
         if(host != null)
             host.replaceAll("\\s+", "");
         hash_map.put(HOST, host);
