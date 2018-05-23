@@ -15,7 +15,7 @@ public class Parser {
     public static final int CONTENT_LENGHT = 5;
 
     private boolean parsed = false;
-    private boolean isParsed = false;
+    private boolean isParsed;
 
     private HashMap<String, String> header_response;
 
@@ -24,6 +24,7 @@ public class Parser {
         System.out.println("Constructor of Parser.");
         header_response = new HashMap<>();
         helper_response = "";
+        isParsed = false;
     }
 
     public String getMethod() { return method; }

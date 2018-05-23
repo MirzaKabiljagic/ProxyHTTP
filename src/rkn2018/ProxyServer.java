@@ -12,7 +12,6 @@ public class ProxyServer extends Thread{
 
     private InputStream fromServer;
     private OutputStream toClient;
-    private static final int CONNECTION = 2;
     private boolean connected;
     //empty constructor
     ProxyServer(){}
@@ -28,10 +27,8 @@ public class ProxyServer extends Thread{
 
     @Override
     public void run() {
-
-
         Parser parse = new Parser();
-        byte[] replyBuffer = new byte[4096];
+        byte[] replyBuffer = new byte[ProxyClient.SIZE_OF_BYTE];
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         int readBytes;
@@ -42,48 +39,30 @@ public class ProxyServer extends Thread{
             {
                 outputStream.write(Arrays.copyOfRange(replyBuffer, 0, readBytes));
 
-                   if(connected){
+                if(connected){
                     toClient.write(replyBuffer,0, readBytes);
                     toClient.flush();
                     continue;
                 }
 
-
                 byte[] parseArray = outputStream.toByteArray();
                 //start parsing
                 parse.startParse(parseArray);
 
-                //TODO
-
                 //if whole data is parsed break
-                if (parse.getParsed() == true){
-
-                    //write to client
-                    try {
-                        toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-                        toClient.flush();
-                    }
-                    catch (IOException e)
-                    {
-                        System.out.println("It is not possible to transfer data to client");
-                    }
-
-
-
-                    String konekcija = parse.valuesFromField().get(CONNECTION);
-                    if(konekcija != null && !konekcija.equals("keep-alive"))
+                if (parse.getParsed() == true)
+                {
+                    if(ProxyClient.statusCheck(parse))
                         break;
 
-
-                   parse = new Parser();
-                   outputStream.close();
-                   outputStream = new ByteArrayOutputStream();
+                    parse = new Parser();
+                    outputStream.close();
+                    outputStream = new ByteArrayOutputStream();
                 }
 
                 //return if thread is interrupted
                 if(isInterrupted())
                     return;
-
             }
         }
         catch (IOException e)
@@ -92,8 +71,15 @@ public class ProxyServer extends Thread{
             e.printStackTrace();
         }
 
-
-
-
+        //write to client
+        try
+        {
+            toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+            toClient.flush();
+        }
+        catch (IOException e)
+        {
+            System.out.println("It is not possible to transfer data to client");
+        }
     }
 }

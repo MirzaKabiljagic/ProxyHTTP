@@ -14,7 +14,7 @@ class ProxyClient extends Thread {
     private OutputStream toClient;
     private InputStream fromServer;
     private OutputStream toServer;
-    private static final int SIZE_OF_BYTE = 4096;
+    public static final int SIZE_OF_BYTE = 4096;
     private static final int TIMEOUT = 3000;
     private static final int OFF_TRIGGER = 0;
     private Socket SocketClient;
@@ -103,7 +103,8 @@ class ProxyClient extends Thread {
                             map = parse.valuesFromField();
 
                             String host = map.get(Parser.HOST);
-                            if (host == null) {
+                            if (host == null)
+                            {
                                 System.out.println("Host equals null");
                                 closeConnection();
                                 return;
@@ -122,11 +123,12 @@ class ProxyClient extends Thread {
                                 out.flush();
                                 connected = true;
 
-                            } else {
-                                System.out.println("Host http is: " + host.split(":")[0]);
+                            }
+                            else
+                            {
                                 String new_host = host.split(":")[0];
-
-                                SocketServer = new Socket(new_host, 80);
+                                System.out.println("Host http is: " + new_host);
+                                SocketServer = new Socket(host, 80);
                                 setTimeOut(SocketServer);
 
                             }
@@ -134,10 +136,11 @@ class ProxyClient extends Thread {
                         } catch (IOException e) {
                             System.out.println("Connection can't be estabilished to host");
                             closeConnection();
+                            return;
                         }
                         try {
                             System.out.println("Input/output stream! Output: " +
-                                                    SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
+                                    SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
 
                             toServer = SocketServer.getOutputStream();
                             fromServer = SocketServer.getInputStream();
@@ -155,17 +158,18 @@ class ProxyClient extends Thread {
                     if (connected) {
                         continue;
                     }
+                    try {
+                        System.out.println("Write and flush");
+                        toServer.write(outputStream.toByteArray(), OFF_TRIGGER, outputStream.toByteArray().length);
+                        toServer.flush();
+                    } catch (IOException e) {
+                        System.out.println("Can't reach data from server!");
+                        server.interrupt();
+                        closeConnection();
+                        return;
+                    }
                 }
-                try {
-                    System.out.println("Write and flush");
-                    toServer.write(outputStream.toByteArray(), OFF_TRIGGER, outputStream.toByteArray().length);
-                    toServer.flush();
-                } catch (IOException e) {
-                    System.out.println("Can't reach data from server!");
-                    server.interrupt();
-                    closeConnection();
-                    return;
-                }
+
                 if (statusCheck(parse) == true )
                     break;
 
@@ -184,16 +188,17 @@ class ProxyClient extends Thread {
         closeConnection();
     }
 
-
-
     public static void connectionCheck(OutputStream toServer_,int readBytes_, byte[] requestBuffer_  ){
-        try{
+        try
+        {
             toServer_.write(requestBuffer_, 0, readBytes_);
             toServer_.flush();
-        }catch(IOException e){
+        }
+        catch(IOException e)
+        {
             System.out.println("Can't write data to server");
             e.printStackTrace();
-        }
+        }   
     }
     public static boolean statusCheck(Parser parse_){
         String konekcija = parse_.valuesFromField().get(Parser.CONNECTION);
@@ -202,6 +207,4 @@ class ProxyClient extends Thread {
         else
             return false;
     }
-
-
 }
