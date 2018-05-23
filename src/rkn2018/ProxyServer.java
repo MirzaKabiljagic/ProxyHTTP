@@ -55,9 +55,15 @@ public class ProxyServer extends Thread{
                     if(ProxyClient.statusCheck(parse))
                         break;
 
+<<<<<<< HEAD
                     parse = new Parser();
                     outputStream.close();
                     outputStream = new ByteArrayOutputStream();
+=======
+                   parse = new Parser();
+                   outputStream.close();
+                   outputStream = new ByteArrayOutputStream();
+>>>>>>> a08a5028db4c3615a8306e10e1c1aaab569ac667
                 }
 
                 //return if thread is interrupted
