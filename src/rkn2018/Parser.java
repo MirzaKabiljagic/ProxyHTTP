@@ -13,6 +13,7 @@ public class Parser {
     public static final int CONTENT_ENCODING = 3;
     public static final int CONTENT_TYPE = 4;
     public static final int CONTENT_LENGHT = 5;
+    public static final int TRANSFER_ENCODING = 6;
 
     private boolean parsed = false;
     private boolean isParsed;
@@ -123,7 +124,7 @@ public class Parser {
         String content_encoding = getResponseValues("Content-Encoding");
         if(content_encoding != null)
             content_encoding.replaceAll("\\s+", "");
-        hash_map.put(CONTENT_ENCODING, connection);
+        hash_map.put(CONTENT_ENCODING, content_encoding);
 
         String content_type = getResponseValues("Content-Type");
         if(content_type != null)
@@ -134,6 +135,12 @@ public class Parser {
         if(content_length != null)
             content_length.replaceAll("\\s+", "");
         hash_map.put(CONTENT_LENGHT, content_length);
+
+
+        String transfer_encoding = getResponseValues("Transfer-Encoding");
+        if(transfer_encoding != null)
+            transfer_encoding.replaceAll("\\s+", "");
+        hash_map.put(TRANSFER_ENCODING, transfer_encoding);
 
         return hash_map;
     }
