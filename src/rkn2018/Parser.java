@@ -39,29 +39,52 @@ public class Parser {
         return header_response.get(name);
     }
 
-    public void checkEnd(byte[] inputClient_)
-    {
-        System.out.println("We are checking end of header");
+    public boolean contentLenCheck(byte[] input){
+        System.out.println("We are checking length of the content");
+
         if(valuesFromField().get(CONTENT_LENGHT) != null)
         {
             int content_len = Integer.parseInt(valuesFromField().get(CONTENT_LENGHT));
-            if(content_len == inputClient_.length - headerSize())
+            if(content_len == input.length - headerSize())
             {
-                parsed = true;
-                System.out.println("We are finish with checking header.");
+
+                System.out.println("We are finished with checking the header.");
+                return true;
             }
         }
-        else if(inputClient_[inputClient_.length - 1] == 10 && inputClient_[inputClient_.length - 2] == 13 && inputClient_[inputClient_.length - 3] == 10 &&
+     return false;
+    }
+
+    public boolean chunkedCheck(byte[] inputClient_){
+        System.out.println("We are checking chunking here");
+
+        if(header_response.get(TRANSFER_ENCODING) != null && header_response.get(TRANSFER_ENCODING).equals("chunked")){
+
+            if(inputClient_[inputClient_.length-5] == 48 && inputClient_[inputClient_.length -4] == 13
+                    && inputClient_[inputClient_.length-3] == 10 && inputClient_[inputClient_.length-2] == 13
+                    && inputClient_[inputClient_.length-1] == 10)
+                System.out.println("Finish with checking chunked");
+                return true;
+        }
+        return false;
+    }
+
+
+
+
+    public boolean checkEnd(byte[] inputClient_)
+    {
+        System.out.println("We are checking end of header");
+
+        if(inputClient_[inputClient_.length - 1] == 10 &&
+                inputClient_[inputClient_.length - 2] == 13 &&
+                inputClient_[inputClient_.length - 3] == 10 &&
                 inputClient_[inputClient_.length - 4] == 13)
         {
-            parsed = true;
-            System.out.println("We are finish with checking header.");
+            System.out.println("We are finished with checking header.");
+            return true;
         }
-        else
-        {
-            parsed = false;
-            System.out.println("We are finish with checking header. Header is not correct!");
-        }
+      return false;
     }
 
     public void startParse(byte[] inputClient)
@@ -103,7 +126,19 @@ public class Parser {
             helper_response += newline;
             isParsed = true;
 
-            checkEnd(inputClient);
+            if(contentLenCheck(inputClient)){
+                parsed = true;
+            }
+            else if(chunkedCheck(inputClient)){
+                parsed = true;
+            }
+            else if(checkEnd(inputClient)){
+                parsed = true;
+            }
+
+            else
+                parsed = false;
+            System.out.print("stojke helper" + helper_response);
             System.out.println("Finishing with parsing!");
         }
     }
