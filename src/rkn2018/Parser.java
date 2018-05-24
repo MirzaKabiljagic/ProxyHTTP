@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 
 public class Parser {
+
     private String method;
     private String helper_response;
 
@@ -14,6 +15,7 @@ public class Parser {
     public static final int CONTENT_TYPE = 4;
     public static final int CONTENT_LENGHT = 5;
     public static final int TRANSFER_ENCODING = 6;
+
 
     private boolean parsed = false;
     private boolean isParsed;
@@ -52,7 +54,7 @@ public class Parser {
                 return true;
             }
         }
-     return false;
+        return false;
     }
 
     public boolean chunkedCheck(byte[] inputClient_){
@@ -64,12 +66,10 @@ public class Parser {
                     && inputClient_[inputClient_.length-3] == 10 && inputClient_[inputClient_.length-2] == 13
                     && inputClient_[inputClient_.length-1] == 10)
                 System.out.println("Finish with checking chunked");
-                return true;
+            return true;
         }
         return false;
     }
-
-
 
 
     public boolean checkEnd(byte[] inputClient_)
@@ -84,7 +84,7 @@ public class Parser {
             System.out.println("We are finished with checking header.");
             return true;
         }
-      return false;
+        return false;
     }
 
     public void startParse(byte[] inputClient)
@@ -102,6 +102,7 @@ public class Parser {
             while((input = inputBuffer.readLine()) != null && !input.isEmpty())
             {
                 helper_response += input + newline;
+                FileWriter.caller.inputData(input);
 
                 if(count == 0)
                 {
@@ -126,6 +127,8 @@ public class Parser {
             helper_response += newline;
             isParsed = true;
 
+            FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
+
             if(contentLenCheck(inputClient)){
                 parsed = true;
             }
@@ -138,7 +141,6 @@ public class Parser {
 
             else
                 parsed = false;
-            System.out.print("stojke helper" + helper_response);
             System.out.println("Finishing with parsing!");
         }
     }
@@ -146,14 +148,14 @@ public class Parser {
     public  HashMap<Integer, String>valuesFromField()
     {
         HashMap<Integer, String> hash_map = new HashMap<>();
-        String host = getResponseValues("Host"); 
+        String host = getResponseValues("Host");
         if(host != null)
             host.replaceAll("\\s+", "");
         hash_map.put(HOST, host);
 
         String connection = getResponseValues("Connection");
         if(connection != null)
-             connection.replaceAll("\\s+", "");
+            connection.replaceAll("\\s+", "");
         hash_map.put(CONNECTION, connection);
 
         String content_encoding = getResponseValues("Content-Encoding");
