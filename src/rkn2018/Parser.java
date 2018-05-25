@@ -1,10 +1,18 @@
 package rkn2018;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
 public class Parser {
+
+
+
+    private enum situationOfChunked {
+        CHUNK_PARSED,
+        TRY_NEXT_CHUNK
+    }
 
     private String method;
     private String helper_response;
@@ -15,6 +23,8 @@ public class Parser {
     public static final int CONTENT_TYPE = 4;
     public static final int CONTENT_LENGHT = 5;
     public static final int TRANSFER_ENCODING = 6;
+    public static int lengthOfChunk = 0;
+    public static int indexOfLF = -1;
 
 
     private boolean parsed = false;
@@ -193,6 +203,44 @@ public class Parser {
             return -1;
         }
     }
+
+
+    public static byte[] dataFromChunk(byte[] chunks) throws IOException, NumberFormatException{
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        situationOfChunked situation;
+        situation = situationOfChunked.CHUNK_PARSED;
+
+        for(int i = 0; i < chunks.length; ++i) {
+            if (situation == situationOfChunked.CHUNK_PARSED) {
+                if (chunks[i] == 13 && chunks[i + 1] == 10) {
+                    String chunk_string = new String(Arrays.copyOfRange(chunks, indexOfLF + 1, i));
+                    lengthOfChunk = Integer.parseInt(chunk_string, 16);
+
+                    if (lengthOfChunk == 0)
+                        break;
+
+                    outputStream.write(Arrays.copyOfRange(chunks, i + 2, i + 2 + lengthOfChunk));
+
+                    indexOfLF = i + 1;
+                    i += lengthOfChunk;
+
+                    situation = situationOfChunked.TRY_NEXT_CHUNK;
+
+                }
+            }else if (situation == situationOfChunked.TRY_NEXT_CHUNK ) {
+                if (chunks[i] == 13 && chunks[i + 1] == 10) {
+                    indexOfLF = i + 1;
+                    situation = situationOfChunked.CHUNK_PARSED;
+                }
+            }
+        }
+
+        return outputStream.toByteArray();
+    }
+
+
 };
 
 
