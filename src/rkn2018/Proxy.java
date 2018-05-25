@@ -15,7 +15,7 @@ import org.apache.commons.cli.ParseException;
 public class Proxy {
 	protected final String dumpPath;
 	protected final Map<String, String> contentReplacements, headerReplacements, redirections;
-	protected final String jsInjectPath;
+	public static String jsInjectPath;
 	protected final List<String> stripDomains;
 	protected final String mitmCertificatePath;
 	protected final boolean sopSwitch;

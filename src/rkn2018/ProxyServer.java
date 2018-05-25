@@ -72,11 +72,23 @@ public class ProxyServer extends Thread{
             System.out.println("It is not possible to read data from server");
             e.printStackTrace();
         }
+        byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+        byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+        if (!Proxy.jsInjectPath.isEmpty()) {
+            ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
 
+            try {
+                BodyReturn = Injector.toInject(BodyReturn, parse);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
         //write to client
         try
         {
-            toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+            //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+            toClient.write(page, 0, page.length);
             toClient.flush();
         }
         catch (IOException e)

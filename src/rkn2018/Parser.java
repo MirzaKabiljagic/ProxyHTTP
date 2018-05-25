@@ -1,6 +1,8 @@
 package rkn2018;
 
 import java.io.*;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -50,7 +52,7 @@ public class Parser {
     {
         return header_response.get(name);
     }
-
+    //******************************************************************************************************************
     public boolean contentLenCheck(byte[] input){
         System.out.println("We are checking length of the content");
 
@@ -66,7 +68,7 @@ public class Parser {
         }
         return false;
     }
-
+    //******************************************************************************************************************
     public boolean chunkedCheck(byte[] inputClient_){
         System.out.println("We are checking chunking here");
 
@@ -81,7 +83,7 @@ public class Parser {
         return false;
     }
 
-
+    //******************************************************************************************************************
     public boolean checkEnd(byte[] inputClient_)
     {
         System.out.println("We are checking end of header");
@@ -96,7 +98,7 @@ public class Parser {
         }
         return false;
     }
-
+    //******************************************************************************************************************
     public void startParse(byte[] inputClient)
             throws IOException
     {
@@ -154,7 +156,7 @@ public class Parser {
             System.out.println("Finishing with parsing!");
         }
     }
-
+    //******************************************************************************************************************
     public  HashMap<Integer, String>valuesFromField()
     {
         HashMap<Integer, String> hash_map = new HashMap<>();
@@ -191,7 +193,7 @@ public class Parser {
 
         return hash_map;
     }
-
+    //******************************************************************************************************************
     int headerSize()
     {
         try
@@ -204,7 +206,7 @@ public class Parser {
         }
     }
 
-
+    //******************************************************************************************************************
     public static byte[] dataFromChunk(byte[] chunks) throws IOException, NumberFormatException{
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -239,8 +241,81 @@ public class Parser {
 
         return outputStream.toByteArray();
     }
+    //******************************************************************************************************************
+    public byte[] headerOrBodyReturn(byte[] input, boolean headerOrBody)
+    {
+        byte[] headerBody;
+        int i;
+        for(i = 0; i < input.length - 3; i++)
+        {
+            if(input[i + 3] == 10 &&
+                    input[i + 2] == 13 &&
+                    input[i + 1] == 10 &&
+                    input[i] == 13)
+            {
+                //i+=3;
+                i = input.length -3;
+                break;
+            }
+        }
 
+        //When headerOrBody = true then header return otherwise return body
+        if(headerOrBody)
+        {
+            headerBody = Arrays.copyOfRange(input, 0, i + 1);
+        }
+        else
+        {
+            headerBody = Arrays.copyOfRange(input, i + 1, input.length);
+        }
 
+        return  headerBody;
+    }
+    //******************************************************************************************************************
+
+    public  byte[] mergeHB(byte[] h, byte[] b) {
+        byte[] holder = new byte[h.length + b.length];
+        for (int i = 0; i < holder.length; ++i)
+        {
+            holder[i] = i < h.length ? h[i] : b[i - h.length];
+        }
+        return holder;
+    }
+    //******************************************************************************************************************
+    public String GZIPDecompression(byte[] compressed, String encoding) throws IOException {
+        ByteArrayInputStream stream = new ByteArrayInputStream(compressed);
+        GZIPInputStream gzip = new GZIPInputStream(stream);
+        InputStreamReader inputRead = new InputStreamReader(gzip, encoding);
+        BufferedReader bufferRead = new BufferedReader(inputRead);
+        StringBuilder output = new StringBuilder();
+        String line;
+        try {
+            while((line = bufferRead.readLine()) != null)
+            {
+                output.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stream.close();
+        bufferRead.close();
+        gzip.close();
+        String decompressed = output.toString();
+        return decompressed;
+    }
+    //******************************************************************************************************************
+    public byte[] GZIPCompression(String webPage, String encoding) throws IOException {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        GZIPOutputStream GZIPOut = new GZIPOutputStream(stream);
+        try {
+            GZIPOut.write(webPage.getBytes(encoding));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GZIPOut.close();
+        byte[] compressed = stream.toByteArray();
+        return compressed;
+    }
 };
 
 
