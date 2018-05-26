@@ -23,10 +23,12 @@ class ProxyClient extends Thread {
     private boolean connected = false;
     private boolean serverConnection = false;
 
+    private Proxy proxy_instance;
     //constructor with socket of client
-    ProxyClient(Socket SocketClient_) {
+    ProxyClient(Socket SocketClient_,  Proxy proxy_instance_) {
 
-        SocketClient = SocketClient_;
+        this.proxy_instance = proxy_instance_;
+        this.SocketClient = SocketClient_;
     }
 
 
@@ -151,7 +153,7 @@ class ProxyClient extends Thread {
                             return;
                         }
                         System.out.println("Init thread and start");
-                        server = new ProxyServer(fromServer, toClient, connected);
+                        server = new ProxyServer(fromServer, toClient, connected, proxy_instance);
                         server.start();
                     }
                     serverConnection = true;
@@ -187,7 +189,7 @@ class ProxyClient extends Thread {
         }
         closeConnection();
     }
-
+    //******************************************************************************************************************
     public static void connectionCheck(OutputStream toServer_,int readBytes_, byte[] requestBuffer_  ){
         try
         {
@@ -200,6 +202,7 @@ class ProxyClient extends Thread {
             e.printStackTrace();
         }   
     }
+    //******************************************************************************************************************
     public static boolean statusCheck(Parser parse_){
         String konekcija = parse_.valuesFromField().get(Parser.CONNECTION);
         if (konekcija != null && !konekcija.equals("keep-alive"))

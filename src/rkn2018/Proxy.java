@@ -33,11 +33,16 @@ public class Proxy {
 		this.mitmCertificatePath = mitmCertificatePath;
 	}
 
+	public Map<String, String > getReplacements()
+	{
+		return contentReplacements;
+	}
+
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
         //ProxyConnection serverConnect = new ProxyConnection();
         //serverConnect.startServer();
-		ProxyConnection proxyConnection = new ProxyConnection();
+		ProxyConnection proxyConnection = new ProxyConnection(this);
 	}
 
 	public static void main(String[] args) throws Exception {

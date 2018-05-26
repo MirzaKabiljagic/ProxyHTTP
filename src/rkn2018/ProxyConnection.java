@@ -13,10 +13,12 @@ public class ProxyConnection{
     private int portNumber = 8080;
     private String host = "127.0.0.1";
     private ServerSocket serverS;
+    private Proxy proxy_instance;
 
     //constructor which call startServer method
-    ProxyConnection()
+    ProxyConnection(Proxy proxy_)
     {
+        this.proxy_instance = proxy_;
         try{
             startServer();
         }
@@ -35,7 +37,7 @@ public class ProxyConnection{
 
         while(true)
         {
-            ProxyClient clientConnection = new ProxyClient(serverS.accept());
+            ProxyClient clientConnection = new ProxyClient(serverS.accept(), proxy_instance);
             clientConnection.start();
         }
 

@@ -72,7 +72,7 @@ public class Parser {
     public boolean chunkedCheck(byte[] inputClient_){
         System.out.println("We are checking chunking here");
 
-        if(header_response.get(TRANSFER_ENCODING) != null && header_response.get(TRANSFER_ENCODING).equals("chunked")){
+        if(valuesFromField().get(TRANSFER_ENCODING) != null && valuesFromField().get(TRANSFER_ENCODING).equals("chunked")){
 
             if(inputClient_[inputClient_.length-5] == 48 && inputClient_[inputClient_.length -4] == 13
                     && inputClient_[inputClient_.length-3] == 10 && inputClient_[inputClient_.length-2] == 13
@@ -315,6 +315,41 @@ public class Parser {
         GZIPOut.close();
         byte[] compressed = stream.toByteArray();
         return compressed;
+    }
+    //******************************************************************************************************************
+    public String getEncoding()
+    {
+        String encoding = valuesFromField().get(CONTENT_TYPE);
+        if(encoding != null)
+        {
+            encoding = encoding.replaceAll("\\s+", "");
+            String[] parsed = encoding.split(";");
+
+            //find value of char-set
+            for(int i = 0; i != parsed.length; i++)
+            {
+               String[] parsed_parsed = parsed[i].split("=");
+
+               if(parsed_parsed.length == 2 && parsed_parsed[0].equalsIgnoreCase("charset"))
+               {
+                   return parsed_parsed[1];
+               }
+            }
+        }
+
+
+        return  "UTF-8";
+    }
+
+    //******************************************************************************************************************
+    public boolean chehckGZIP()
+    {
+        if(valuesFromField().get(CONTENT_ENCODING) != null &&
+                valuesFromField().get(CONTENT_ENCODING).equalsIgnoreCase("gzip"))
+        {
+            return true;
+        }
+        return  false;
     }
 };
 
