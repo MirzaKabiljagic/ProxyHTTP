@@ -2,4 +2,4 @@
 *.class
 bin/
 *.iml
-.txt
+*.txt
