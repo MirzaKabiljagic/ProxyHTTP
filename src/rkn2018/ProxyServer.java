@@ -56,38 +56,6 @@ public class ProxyServer extends Thread{
                 //if whole data is parsed break
                 if (parse.getParsed() == true) {
 
-                    //byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
-                    //byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
-                    //plugins
-                    //plugins(parse, BodyReturn, HeaderReturn);
-                    //if(!transferPlugin)
-                    //return;
-
-
-                    /*if (!Proxy.jsInjectPath.isEmpty()) {
-                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
-
-                        try {
-                            BodyReturn = Injector.toInject(BodyReturn, parse);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
-                    //byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
-                    //write to client
-
-
-                    try
-                    {
-                        //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-                        toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-                        //toClient.write(page, 0, page.length);
-                        toClient.flush();
-                    }
-
-                    catch (IOException e) {
-                        System.out.println("It is not possible to transfer data to client");
-                    }
 
                     if (ProxyClient.statusCheck(parse))
                         break;
@@ -106,6 +74,39 @@ public class ProxyServer extends Thread{
         } catch (IOException e) {
             System.out.println("It is not possible to read data from server");
             e.printStackTrace();
+        }
+
+        //byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+        //byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+        //plugins
+        //plugins(parse, BodyReturn, HeaderReturn);
+        //if(!transferPlugin)
+        //return;
+
+
+                    /*if (!Proxy.jsInjectPath.isEmpty()) {
+                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
+
+                        try {
+                            BodyReturn = Injector.toInject(BodyReturn, parse);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }*/
+        //byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
+        //write to client
+
+
+        try
+        {
+            //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+            toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+            //toClient.write(page, 0, page.length);
+            toClient.flush();
+        }
+
+        catch (IOException e) {
+            System.out.println("It is not possible to transfer data to client");
         }
 
 
@@ -151,7 +152,7 @@ public class ProxyServer extends Thread{
                     if(checkChunk(parse_))
                     {
                         String encodingValue = parse_.getEncoding();
-                        HeaderReturn_ = helper.removeCunks(new String(HeaderReturn_)).getBytes(encodingValue);
+                        HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encodingValue);
                         HeaderReturn_ = helper.SetContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
                     }
                     else
@@ -175,8 +176,7 @@ public class ProxyServer extends Thread{
                 toClient.flush();
                 transferPlugin = true;
             }
-            catch (IOException e)
-            {
+            catch (IOException e) {
 
                 System.out.println("Can not transfer data");
                 e.printStackTrace();
@@ -198,83 +198,80 @@ public class ProxyServer extends Thread{
         int byteRead;
         HashMap<String, String> getContent = new HashMap<>(proxy_instance.getReplacements());
 
-        if(checkChunk(parse__))
-        {
-            try
-            {
+        if(checkChunk(parse__)) {
+            try {
                 replaceBody_ = parse__.dataFromChunk(replaceBody_);
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 System.out.println("Can not read chunks");
                 e.printStackTrace();
             }
 
-            if(parse__.checkGZIP())
-            {
-                //decompress gzip to html
-                try {
-                    ByteArrayInputStream inputToGZP = new ByteArrayInputStream(replaceBody_);
-                    GZIPInputStream inputGZIP = new GZIPInputStream(inputToGZP);
+        }
 
-                    while ((byteRead = inputGZIP.read(helper_buffer)) != -1)
-                    {
-                        outputStream.write(helper_buffer, 0, byteRead);
+        if(parse__.checkGZIP())
+        {
+            //decompress gzip to html
+            try {
+                ByteArrayInputStream inputToGZP = new ByteArrayInputStream(replaceBody_);
+                GZIPInputStream inputGZIP = new GZIPInputStream(inputToGZP);
 
-                    }
-                    replacedContent =  outputStream.toString(encoding);
-                    inputGZIP.close();
-                    outputStream.close();
-
-                }
-                catch (IOException e)
+                while ((byteRead = inputGZIP.read(helper_buffer)) != -1)
                 {
-                    e.printStackTrace();
-                }
-            }
-            else
-            {
-                replacedContent = new String(replaceBody_);
-            }
+                    outputStream.write(helper_buffer, 0, byteRead);
 
-            //then replace content
-            for(Map.Entry<String, String> it : getContent.entrySet())
-            {
-                String temp = getContent.get(it.getKey());
-                replacedContent = replacedContent.replaceAll(it.getKey(), temp);
-            }
-
-            if(parse__.checkGZIP())
-            {
-                try {
-                    ByteArrayOutputStream outputStream_new = new ByteArrayOutputStream();
-                    GZIPOutputStream outputGZIP = new GZIPOutputStream(outputStream_new);
-                    outputGZIP.write(replacedContent.getBytes(encoding));
-                    outputGZIP.close();
-
-                    return outputStream_new.toByteArray();
                 }
-                catch (IOException e)
-                {
-                    System.out.println("Can not compress html to zip");
-                    e.printStackTrace();
-                }
+                replacedContent =  outputStream.toString(encoding);
+                inputGZIP.close();
+                outputStream.close();
 
             }
-            else
+            catch (IOException e)
             {
-                try {
-                    return replacedContent.getBytes(encoding);
-                }
-                catch (IOException e)
-                {
-                    System.out.println("Can not return replaced content");
-                    e.printStackTrace();
-                }
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            replacedContent = new String(replaceBody_);
+        }
 
+        //then replace content
+        for(Map.Entry<String, String> it : getContent.entrySet())
+        {
+            String temp = getContent.get(it.getKey());
+            replacedContent = replacedContent.replaceAll(it.getKey(), temp);
+        }
+
+        if(parse__.checkGZIP())
+        {
+            try {
+                ByteArrayOutputStream outputStream_new = new ByteArrayOutputStream();
+                GZIPOutputStream outputGZIP = new GZIPOutputStream(outputStream_new);
+                outputGZIP.write(replacedContent.getBytes(encoding));
+                outputGZIP.close();
+
+                return outputStream_new.toByteArray();
+            }
+            catch (IOException e)
+            {
+                System.out.println("Can not compress html to gzip");
+                e.printStackTrace();
             }
 
         }
+        else
+        {
+            try {
+                return replacedContent.getBytes(encoding);
+            }
+            catch (IOException e)
+            {
+                System.out.println("Can not return replaced content");
+                e.printStackTrace();
+            }
+
+        }
+        //it will be never returned
         return  new byte[0];
     }
     //******************************************************************************************************************

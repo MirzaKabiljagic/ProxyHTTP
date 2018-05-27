@@ -327,7 +327,7 @@ public class Parser {
             String[] parsed = encoding.split(";");
 
             //find value of char-set
-            for(int i = 0; i != parsed.length; i++)
+            for(int i = 0; i < parsed.length; i++)
             {
                String[] parsed_parsed = parsed[i].split("=");
 

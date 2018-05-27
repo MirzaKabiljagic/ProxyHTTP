@@ -40,11 +40,11 @@ public class PluginHelper {
         String[] parsed = input.split("\r\n");
         String returnString = "";
 
-        for(int i = 0; i != parsed.length; i++)
+        for(int i = 0; i < parsed.length; i++)
         {
 
             //set every time
-            if(parsed[0].equals("Content-Length"))
+            if(parsed[i].contains("Content-Length"))
                 continue;
 
             returnString += parsed[i] + "\r\n";
@@ -63,16 +63,15 @@ public class PluginHelper {
         String[] parsed = input.split("\r\n");
         String returnString = "";
 
-        for(int i = 0; i != parsed.length; i++)
+        for(int i = 0; i < parsed.length; i++)
         {
             //change content_length if it exists
-            if(parsed[0].equals("Content-Length"))
+            if(parsed[i].contains("Content-Length"))
             {
                 returnString += "Content-Length: " + length + "\r\n";
             }
-
-            returnString += parsed[i] + "\r\n";
-
+            else
+                returnString += parsed[i] + "\r\n";
         }
 
         returnString += "\r\n";
@@ -80,14 +79,14 @@ public class PluginHelper {
         return returnString;
     }
     //******************************************************************************************************************
-    String removeCunks(String input)
+    String removeChunks(String input)
     {
         String returnString = "";
         String[] parsed = input.split("\r\n");
-        for(int i = 0; i != parsed.length; i++)
+        for(int i = 0; i < parsed.length; i++)
         {
-            if(!parsed[0].equals("Transfer-Encoding") ||
-                    !parsed[0].equals("Content-Length"))
+            if(!parsed[i].contains("Transfer-Encoding") ||
+                    !parsed[i].contains("Content-Length"))
             {
                 returnString += parsed[i] + "\r\n";
             }
