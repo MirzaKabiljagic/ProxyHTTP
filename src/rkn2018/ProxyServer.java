@@ -55,6 +55,40 @@ public class ProxyServer extends Thread{
 
                 //if whole data is parsed break
                 if (parse.getParsed() == true) {
+
+                    //byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+                    //byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+                    //plugins
+                    //plugins(parse, BodyReturn, HeaderReturn);
+                    //if(!transferPlugin)
+                    //return;
+
+
+                    /*if (!Proxy.jsInjectPath.isEmpty()) {
+                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
+
+                        try {
+                            BodyReturn = Injector.toInject(BodyReturn, parse);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }*/
+                    //byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
+                    //write to client
+
+
+                    try
+                    {
+                        //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+                        toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+                        //toClient.write(page, 0, page.length);
+                        toClient.flush();
+                    }
+
+                    catch (IOException e) {
+                        System.out.println("It is not possible to transfer data to client");
+                    }
+
                     if (ProxyClient.statusCheck(parse))
                         break;
 
@@ -74,36 +108,8 @@ public class ProxyServer extends Thread{
             e.printStackTrace();
         }
 
-        byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
-        byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
-        //plugins
-        plugins(parse, BodyReturn, HeaderReturn);
-        if(!transferPlugin)
-            return;
 
 
-        if (!Proxy.jsInjectPath.isEmpty()) {
-            ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
-
-            try {
-                BodyReturn = Injector.toInject(BodyReturn, parse);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
-        //write to client
-        try
-        {
-            toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-            //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-            toClient.write(page, 0, page.length);
-            toClient.flush();
-        }
-
-        catch (IOException e) {
-            System.out.println("It is not possible to transfer data to client");
-        }
 
 
     }
@@ -186,7 +192,7 @@ public class ProxyServer extends Thread{
     {
 
         String replacedContent = "";
-        String econding = parse__.getEncoding();
+        String encoding = parse__.getEncoding();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] helper_buffer = new byte[1024];
         int byteRead;
@@ -204,7 +210,7 @@ public class ProxyServer extends Thread{
                 e.printStackTrace();
             }
 
-            if(parse__.chehckGZIP())
+            if(parse__.checkGZIP())
             {
                 //decompress gzip to html
                 try {
@@ -216,7 +222,7 @@ public class ProxyServer extends Thread{
                         outputStream.write(helper_buffer, 0, byteRead);
 
                     }
-                    replacedContent =  outputStream.toString(econding);
+                    replacedContent =  outputStream.toString(encoding);
                     inputGZIP.close();
                     outputStream.close();
 
@@ -238,12 +244,12 @@ public class ProxyServer extends Thread{
                 replacedContent = replacedContent.replaceAll(it.getKey(), temp);
             }
 
-            if(parse__.chehckGZIP())
+            if(parse__.checkGZIP())
             {
                 try {
                     ByteArrayOutputStream outputStream_new = new ByteArrayOutputStream();
                     GZIPOutputStream outputGZIP = new GZIPOutputStream(outputStream_new);
-                    outputGZIP.write(replacedContent.getBytes(econding));
+                    outputGZIP.write(replacedContent.getBytes(encoding));
                     outputGZIP.close();
 
                     return outputStream_new.toByteArray();
@@ -258,7 +264,7 @@ public class ProxyServer extends Thread{
             else
             {
                 try {
-                    return replacedContent.getBytes(econding);
+                    return replacedContent.getBytes(encoding);
                 }
                 catch (IOException e)
                 {

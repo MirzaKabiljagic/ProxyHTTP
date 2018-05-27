@@ -23,7 +23,7 @@ public class Parser {
     public static final int CONNECTION = 2;
     public static final int CONTENT_ENCODING = 3;
     public static final int CONTENT_TYPE = 4;
-    public static final int CONTENT_LENGHT = 5;
+    public static final int CONTENT_LENGTH = 5;
     public static final int TRANSFER_ENCODING = 6;
     public static int lengthOfChunk = 0;
     public static int indexOfLF = -1;
@@ -56,9 +56,9 @@ public class Parser {
     public boolean contentLenCheck(byte[] input){
         System.out.println("We are checking length of the content");
 
-        if(valuesFromField().get(CONTENT_LENGHT) != null)
+        if(valuesFromField().get(CONTENT_LENGTH) != null)
         {
-            int content_len = Integer.parseInt(valuesFromField().get(CONTENT_LENGHT));
+            int content_len = Integer.parseInt(valuesFromField().get(CONTENT_LENGTH));
             if(content_len == input.length - headerSize())
             {
 
@@ -137,6 +137,7 @@ public class Parser {
                 count++;
             }
             helper_response += newline;
+
             isParsed = true;
 
             FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
@@ -157,7 +158,7 @@ public class Parser {
         }
     }
     //******************************************************************************************************************
-    public  HashMap<Integer, String>valuesFromField()
+    public HashMap<Integer, String>valuesFromField()
     {
         HashMap<Integer, String> hash_map = new HashMap<>();
         String host = getResponseValues("Host");
@@ -183,7 +184,7 @@ public class Parser {
         String content_length = getResponseValues("Content-Length");
         if(content_length != null)
             content_length.replaceAll("\\s+", "");
-        hash_map.put(CONTENT_LENGHT, content_length);
+        hash_map.put(CONTENT_LENGTH, content_length);
 
 
         String transfer_encoding = getResponseValues("Transfer-Encoding");
@@ -342,7 +343,7 @@ public class Parser {
     }
 
     //******************************************************************************************************************
-    public boolean chehckGZIP()
+    public boolean checkGZIP()
     {
         if(valuesFromField().get(CONTENT_ENCODING) != null &&
                 valuesFromField().get(CONTENT_ENCODING).equalsIgnoreCase("gzip"))

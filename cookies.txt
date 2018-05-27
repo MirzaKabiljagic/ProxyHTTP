@@ -1,0 +1,1855 @@
+GET http://orf.at/ HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-None-Match: "CxmIywYyuX9QtZ0RXVLBNQ=="
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Jetty(6.1.22)
+Connection: close
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo.compressed/1_3/news//news/main.js?v=2018052424 HTTP/1.1
+Host: orf.at
+GET http://orf.at/mojo.compressed/1_3/news//news/print.css?v=2018052424 HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/css,*/*;q=0.1
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Tue, 22 May 2018 12:09:23 GMT
+If-None-Match: "68d-56cca49ecc2c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo.compressed/1_3/news//news/main.css?v=2018052424 HTTP/1.1
+Host: orf.at
+GET http://orf.at/oon/media/4.4/oon.media-bundle.css?v=2018052424 HTTP/1.1
+Referer: http://orf.at/
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Host: orf.at
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Fri, 25 May 2018 07:18:44 GMT
+If-None-Match: "3cd3-56d029400dd00"
+Cache-Control: max-age=0
+If-Modified-Since: Thu, 24 May 2018 18:57:56 GMT
+If-None-Match: "f565-56cf83ab23500"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/css,*/*;q=0.1
+GET http://orf.at/oon/media/4.4/oon.media-bundle.js?v=2018052424 HTTP/1.1
+Host: orf.at
+Accept-Language: en-US,en;q=0.5
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept-Encoding: gzip, deflate
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Referer: http://orf.at/
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Fri, 25 May 2018 12:29:12 GMT
+If-Modified-Since: Fri, 25 May 2018 12:29:25 GMT
+If-None-Match: "1f4a4-56d06eb17f340"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+If-None-Match: "7eec-56d06ea519600"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://pipe.orf.at/globus-0.4/code/injector.js HTTP/1.1
+Host: pipe.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 23 May 2018 13:16:15 GMT
+If-None-Match: "280-56cdf56e665c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "68d-56cca49ecc2c0"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "3cd3-56d029400dd00"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "1f4a4-56d06eb17f340"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+--------------------------------------------------------------------------------
+
+Server: Apache
+Connection: close
+ETag: "f565-56cf83ab23500"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "7eec-56d06ea519600"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/news_v2.svg HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 19 Jul 2017 11:39:40 GMT
+If-None-Match: "47a-554aa165e3700"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/target_news_v2.svg HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 19 Jul 2017 11:39:40 GMT
+If-None-Match: "645-554aa165e3700"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/flags/flag.news.app2.x2.png HTTP/1.1
+Host: orf.at
+Connection: close
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+ETag: "280-56cdf56e665c0"
+Accept: */*
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Accept-Language: en-US,en;q=0.5
+Cache-Control: public, max-age=60
+Accept-Encoding: gzip, deflate
+Vary: Origin,Accept-Encoding
+Referer: http://orf.at/
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/flags/flag.festwochen17.ticker.2x.png?v=0.1 HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 15 May 2017 14:15:42 GMT
+If-None-Match: "19d6-54f90b0b39f80"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+Connection: keep-alive
+If-Modified-Since: Tue, 24 Jan 2017 13:04:27 GMT
+If-None-Match: "2dea-546d6c181acc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+GET http://pipe.orf.at/lomac/omac-bundle-min.js HTTP/1.1
+Host: pipe.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "47a-554aa165e3700"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "645-554aa165e3700"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "19d6-54f90b0b39f80"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "2dea-546d6c181acc0"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+If-Modified-Since: Tue, 30 Jan 2018 11:55:09 GMT
+If-None-Match: "40f-563fd08cbc140"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver/news/common/images/orf-brick.svg HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/mojo.compressed/1_3/news//news/main.css?v=2018052424
+Connection: keep-alive
+If-Modified-Since: Wed, 30 Apr 2014 09:32:36 GMT
+If-None-Match: "311-4f83f3a903500"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "40f-563fd08cbc140"
+Vary: Origin,Accept-Encoding
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "311-4f83f3a903500"
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+GET http://wetter.orf.at/api/jsonp/current/oe3?callback=initWeather&_=1527420122297 HTTP/1.1
+Host: wetter.orf.at
+--------------------------------------------------------------------------------
+
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+GET http://orf.at/static-extras/bulawindow.json?origin=orf.at HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+X-Requested-With: XMLHttpRequest
+Connection: keep-alive
+If-Modified-Since: Sun, 27 May 2018 11:14:56 GMT
+If-None-Match: "1fd6-56d2e1c672c00"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Jetty(6.1.22)
+X-Cache: HIT from 127.0.0.1
+X-Uncompressed-Size: 1511
+ETag: "DA0EzytUbqcbocTzvbr33A=="
+Content-Length: 402
+Content-Encoding: gzip
+Content-Type: text/javascript; charset=UTF-8
+Connection: close
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Connection: close
+ETag: "1fd6-56d2e1c672c00"
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 04 Aug 2014 12:40:31 GMT
+If-None-Match: "90c-4ffcd0b5f0dc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Last-Modified: Tue, 05 Aug 2014 10:48:21 GMT
+ETag: "90c-4ffdf9812c740"
+Accept-Ranges: bytes
+Content-Length: 2316
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_3/images/icons/day/svg-transparent/null.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Thu, 06 Apr 2017 14:23:01 GMT
+If-None-Match: "44-54c803f0e9b40"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:02 GMT
+Server: Apache
+Last-Modified: Thu, 06 Apr 2017 14:24:47 GMT
+ETag: "44-54c80456009c0"
+Accept-Ranges: bytes
+Content-Length: 68
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:02 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Length: 83
+Content-Type: application/ocsp-request
+Content-Type: application/ocsp-request
+Connection: keep-alive
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+POST http://s373.meetrics.net/bb-mx/submit?/GuilGujLALklFCTkzFeGYEFAAATUoJ8XABPUcAAAAAAAIAAAARksFA HTTP/1.1
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Content-Length: 0
+Content-Type: text/plain;charset=UTF-8
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+GET http://orf.at/ HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-None-Match: "CxmIywYyuX9QtZ0RXVLBNQ=="
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Jetty(6.1.22)
+Connection: close
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo.compressed/1_3/news//news/main.css?v=2018052424 HTTP/1.1
+Host: orf.at
+GET http://orf.at/mojo.compressed/1_3/news//news/print.css?v=2018052424 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Host: orf.at
+Accept: text/css,*/*;q=0.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept-Language: en-US,en;q=0.5
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.5
+Referer: http://orf.at/
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://orf.at/
+If-Modified-Since: Fri, 25 May 2018 07:18:44 GMT
+Connection: keep-alive
+If-None-Match: "3cd3-56d029400dd00"
+If-Modified-Since: Tue, 22 May 2018 12:09:23 GMT
+Cache-Control: max-age=0
+If-None-Match: "68d-56cca49ecc2c0"
+--------------------------------------------------------------------------------
+
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://orf.at/oon/media/4.4/oon.media-bundle.css?v=2018052424 HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Fri, 25 May 2018 12:29:12 GMT
+If-None-Match: "7eec-56d06ea519600"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://orf.at/oon/media/4.4/oon.media-bundle.js?v=2018052424 HTTP/1.1
+GET http://orf.at/mojo.compressed/1_3/news//news/main.js?v=2018052424 HTTP/1.1
+Host: orf.at
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Accept: */*
+If-Modified-Since: Fri, 25 May 2018 12:29:25 GMT
+Accept-Language: en-US,en;q=0.5
+If-None-Match: "1f4a4-56d06eb17f340"
+GET http://pipe.orf.at/globus-0.4/code/injector.js HTTP/1.1
+Accept-Encoding: gzip, deflate
+Host: pipe.orf.at
+Cache-Control: max-age=0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+--------------------------------------------------------------------------------
+
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Thu, 24 May 2018 18:57:56 GMT
+If-None-Match: "f565-56cf83ab23500"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Apache
+Connection: close
+ETag: "68d-56cca49ecc2c0"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Apache
+Connection: close
+ETag: "3cd3-56d029400dd00"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 23 May 2018 13:16:15 GMT
+If-None-Match: "280-56cdf56e665c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Apache
+Connection: close
+ETag: "7eec-56d06ea519600"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Apache
+Connection: close
+ETag: "1f4a4-56d06eb17f340"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+Vary: Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/target_news_v2.svg HTTP/1.1
+Server: Apache
+Host: orf.at
+Connection: close
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+ETag: "f565-56cf83ab23500"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 19 Jul 2017 11:39:40 GMT
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/news_v2.svg HTTP/1.1
+Host: orf.at
+If-None-Match: "645-554aa165e3700"
+Cache-Control: max-age=0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+--------------------------------------------------------------------------------
+
+Vary: Accept-Encoding
+Accept: */*
+--------------------------------------------------------------------------------
+
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Wed, 19 Jul 2017 11:39:40 GMT
+If-None-Match: "47a-554aa165e3700"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/flags/flag.news.app2.x2.png HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Tue, 24 Jan 2017 13:04:27 GMT
+If-None-Match: "2dea-546d6c181acc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver//news/news/images/flags/flag.festwochen17.ticker.2x.png?v=0.1 HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 15 May 2017 14:15:42 GMT
+If-None-Match: "19d6-54f90b0b39f80"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:03 GMT
+Server: Apache
+Connection: close
+ETag: "280-56cdf56e665c0"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: public, max-age=60
+Vary: Origin,Accept-Encoding
+--------------------------------------------------------------------------------
+
+GET http://pipe.orf.at/lomac/omac-bundle-min.js HTTP/1.1
+Host: pipe.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+HTTP/1.1 304 Not Modified
+If-Modified-Since: Tue, 30 Jan 2018 11:55:09 GMT
+Date: Sun, 27 May 2018 11:22:03 GMT
+If-None-Match: "40f-563fd08cbc140"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Connection: close
+ETag: "47a-554aa165e3700"
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+Server: Apache
+Connection: close
+ETag: "645-554aa165e3700"
+Expires: Tue, 26 Jun 2018 11:22:03 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+GET http://orf.at/mojo/1_3/storyserver/news/common/images/orf-brick.svg HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/mojo.compressed/1_3/news//news/main.css?v=2018052424
+Connection: keep-alive
+If-Modified-Since: Wed, 30 Apr 2014 09:32:36 GMT
+If-None-Match: "311-4f83f3a903500"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+HTTP/1.1 304 Not Modified
+Server: Apache
+Date: Sun, 27 May 2018 11:22:04 GMT
+Connection: close
+Server: Apache
+ETag: "19d6-54f90b0b39f80"
+Connection: close
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+ETag: "2dea-546d6c181acc0"
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+--------------------------------------------------------------------------------
+
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Connection: close
+ETag: "40f-563fd08cbc140"
+Vary: Origin,Accept-Encoding
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Connection: close
+ETag: "311-4f83f3a903500"
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+GET http://orf.at/static-extras/bulawindow.json?origin=orf.at HTTP/1.1
+Host: orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+X-Requested-With: XMLHttpRequest
+Connection: keep-alive
+If-Modified-Since: Sun, 27 May 2018 11:14:56 GMT
+If-None-Match: "1fd6-56d2e1c672c00"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/api/jsonp/current/oe3?callback=initWeather&_=1527420124054 HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Connection: close
+ETag: "1fd6-56d2e1c672c00"
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Jetty(6.1.22)
+X-Cache: HIT from 127.0.0.1
+X-Uncompressed-Size: 1511
+ETag: "DA0EzytUbqcbocTzvbr33A=="
+Content-Length: 402
+Content-Encoding: gzip
+Content-Type: text/javascript; charset=UTF-8
+Connection: close
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_3/images/icons/day/svg-transparent/null.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Thu, 06 Apr 2017 14:24:47 GMT
+If-None-Match: "44-54c80456009c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Connection: close
+ETag: "44-54c80456009c0"
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+Cache-Control: max-age=2592000
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:04 GMT
+Server: Apache
+Last-Modified: Tue, 05 Aug 2014 10:48:21 GMT
+ETag: "90c-4ffdf9812c740"
+Accept-Ranges: bytes
+Content-Length: 2316
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:04 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+POST http://ocsp.entrust.net/ HTTP/1.1
+Host: ocsp.entrust.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+POST http://status.rapidssl.com/ HTTP/1.1
+Host: status.rapidssl.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+POST http://s373.meetrics.net/bb-mx/submit?/t0xgF8JMALklFCTkzFtPDhKAAAAAAHAAAAGAAA5AATUoJ8XABPUDAAAAAAAIAAAARksFA HTTP/1.1
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Content-Length: 0
+Content-Type: text/plain;charset=UTF-8
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+POST http://status.rapidssl.com/ HTTP/1.1
+Host: status.rapidssl.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 04 Aug 2014 12:40:31 GMT
+If-None-Match: "90c-4ffcd0b5f0dc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:05 GMT
+Server: Apache
+Last-Modified: Tue, 05 Aug 2014 10:48:21 GMT
+ETag: "90c-4ffdf9812c740"
+Accept-Ranges: bytes
+Content-Length: 2316
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:05 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:05 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:05 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT orf.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: orf.at:443
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+CONNECT pdc.sf.apa.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: pdc.sf.apa.at:443
+--------------------------------------------------------------------------------
+
+GET http://script-at.iocnt.net/iam.js HTTP/1.1
+Host: script-at.iocnt.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://pipe.orf.at/zib100/zib100.json?origin=orf.at HTTP/1.1
+Host: pipe.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Origin: http://orf.at
+Connection: keep-alive
+If-Modified-Since: Fri, 25 May 2018 15:22:51 GMT
+If-None-Match: "12e-56d095756e8c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+GET http://info.cern.ch/ HTTP/1.1
+Server: Apache
+Host: info.cern.ch
+Connection: close
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+ETag: "12e-56d095756e8c0"
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Cache-Control: no-cache
+Accept-Language: en-US,en;q=0.5
+Vary: Origin
+Accept-Encoding: gzip, deflate
+--------------------------------------------------------------------------------
+
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:06 GMT
+Content-Type: application/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: BLACKBIRD-SRC v0.9 0001
+Expires: Sun, 27 May 2018 13:22:06 GMT
+Cache-Control: privat, max-age=7200
+Cache-Control: pre-check=7200
+Last-Modified: Sun, 27 May 2018 11:22:06 GMT
+P3P: policyref=https://script.iocnt.net/p3p.xml, CP=NOI DSP NID PSAa OUR NOR UNI COM NAV
+Content-Encoding: gzip
+--------------------------------------------------------------------------------
+
+�,ɟWi��{�֡�U�ͧ��Q`��nЗ�bfKX��</{A@}
+�M���.��Y�oxϟ[_�����ا��q��G���AZ?H{$U���}5g�A(�
+&ό�Alf�MG,p���}�A�"F�G (5h�	����C�|��s�����ڔ	����\��R/-)��q6��`P��M��6"D%��}݀�ԫ@O�:��'�yV^�p�Zl�KϽ�����B�"
+�zxY��5I
+�@�������%���_$_�[�Rix�܄e��gdM���q��S���s%����p/S��	�}\�d�KLT���
+��%k����J'�˳�6)9��L���y�ڴI�M�;.�O���S�&G�����?$?�] %�
+�h���ir���f�C7���󁏖<�c��k6�ڇz����J� �C����G�v�v�G~[���<�����y<�n��$���ڪ�I���m$�f��a_Fy2/��������o�/�>h9�N��i�.�M�>a&
+� ����F��C~�/��ꗳ����_��GL�S��a��X'^1��)��&m�U�|ӣ�[S���Ƕ��H^�H�!DQj�mQ��kSR�R�U�&��X�`�<CPG檮�#KFç=�ʶ*���9'q��D4W�%F�8_Q�
+�Hqd�N�Γ�xJ�Ը�f��%H;���z<R�it����2)N�Q�-�S8��{k�(�XW��3�h�A)�,^e�#�W
+���*��Q���<�>qh�?ϗ�f9�Qx>����_q~�M{���ǃ��:�$��݆��i�v��q?��Nו�NוA�n�Rt�������X?���ՠ'��$�]F
+ �󞡃���W3��6��@����@th�_Ah,L�zLzy"=W�.]���'c��7��J�܊�@�tξ�<�YI��=N[Y�5f�O�����\ʪ�p}�)l�I�Y��M��4���)�=��1�����Ut����-���Uvʐ����%���� 5��y޿�ӛrO}�_
+8���?d�/�^xVu|�ܴ�	 ��}�8���!D5XBMm_,gG�<9��G�`FE�i�$u�_2���ʃ��I8M>�W{��2Ox��h�0�uJ�����h�Ԙ��
+�?��O�(��|QL$ c�{{��f�0&��Q�)�YQ���Q	�Hi�߳$
+�羄�u b2�8���D4:�Sʹ]mpQ<z��az������G?�ħ
+T/��*���R�o. �]����	�y�&-_�d�,aCx|�mj�![D���H��7o޽��<��e5�n����n����rrܐ!��d�	԰�T�Y��:ҌI��nkm}V��UO�vP2I�NY��e4	l
+Կ�y��I��"���&�Hpi�	���Zy�	�P�`��b��[f6�H��L��z$4���X���X��ʪ{�=k%�Ƨ�_�Y�KV)^���K����L*���2(i㤢�A�
+PJ1��1�܎�J�E�ٚ8���K��uzW�k���;3#Ч)��N�|	_g٪��Fy�6�q��GN<�f�NB�9ϳ2�2J�ɀ�r���U�2PGO��)�������H彜��u�����Y.��[4��s�:��;��ȅ"���|�V�c�[G��� u��	�ͼ��3&�01�rԏל�au��>��sj'.Ċ��'�55<9i:�ETBsY�TQ)��{�(�
+�7k�#�i�ȍc��~�<��k������X�)ۦ\M>�hWe_+�#7d�����nc�DM�r�ZO���~���h+���g)R1#��8���
+�Q3��M-�5�2W�DB�`.��	�VdI�f��횢׸�u��9.���ˋs�8!�eׅ�c������D
+�Y;�Ur���f�,jy�����~\ն�����9��ܧ��������@l�"NG��h\����S7F��� �pL�MNsN����	 �):/�G���Ĩ�Py�. Z<�շn$�	@C��{��
+��Ȃqُ?z��H�u��,��^�e��Cm�.9����B <����#.}1َ`��_������8�ԹBҢ4�G�(	���_�@�Ged�4�{�+;�p�i�w���݃�v�u��Z��f��{���;i�i���s�n�wl����O�{�{��v�ͽ���n�I�Xd����a󠷷���7�Hs���:��{�v��CDvOۭ��As��i�	����� ��<=l���Z"���^�p�p���#I�a�{�UD����>���NO�����`���$�I�^���>@�Iz�^��d0hn�Z��a�5���������E���<��CVW�����ۻ�����Km��lAӇ{{H�7��u�X�U��Vt��'����
+��E)�I�-��z��ZI���ӝV{��<ݗ����P���?��:�
+/ڮ�@�������w�D�u=d k�I���vzP�N��&��A=��6i��''��Io����N���V����]���Nk���T��>��=���R�PqR}�����hԋ'X8�r���	+p!����	fO�p��+�Č�fgΉ�
+�Ý�.��	5]�l�́�	j_(~�UL�(���q����Nj�/1�xE
+��4fyfDQiU4z	���0J�]Z� tr���Wb8��]�&שcQ�&��Hո.�P��l��%�m|�k;5��
+�A0� ��",G����<S0V�o�I����״$_�vD��Ĺ1��N@��8&	X��4v�Zr+��Q\�F(�g6Q�>%��[ZR�F!��C�� %H�c�k��<x�o�������C�^b�8�%Lp����-W�]Z�9������&��'��z�"�kd��V&��-E1�#u��rK�M[���r4�5x�D���=�
+%��  E�$�����4`��@ѻ���9L&�'�B��)}+��"��C��#�b��S��Xj�I�,qW�uLZ�L��O� �#l��T�a����h�3�d���ۺ����%�W�iߍj?��P�J�5����b�D��"s�}����z�(�b�	B�E��TLy^��N4��U
+Q#lC�ZG�`I`����`A�[��>����B��*dd���r��eF;�J|>sY�@�����!ag��@Ь�LA����hۊ�7q�ظȢ�+�"{��jѻ?5$�j���6��$�
+���T�i%��Wm ��8��l��(u�@�*
+��͊����]
+�|"+���EGg�0#F���i������3��_Ӏ.b� �x�`��GT��t:�;��̈́���}�;�խ�
+G���ilCF��gƨO96x�b��0���M�!�_4Dُ�o������hEM���r� �R�O�+��������$Nn&�����l����rB�w��:c{C�}��ūk�$��D��c	 �@���	�������1-ѩ�13Ra��_��에�CN��~&����C��z�'6Pa#;<x���?}�߸��MY�:��۟��onw��kl��ZuU���� �p�����pFDY�e4��{���V۔NL��P˭��~�i3��@�� �6al�Ǟ�8�+�69X�;�J�=�@�
+�[����.���-o�
+��+S�I�n�y�%K�uX�����[u�9�V \����������Mbp��$I�؆�Q͓P �	�[�N�+�i��`CZe���:	4&w��b�B����ئj��D��R�K����;�{�"�UW�����l���7���Td��1��A2]%Oj˃�5�Ȓ��l�<��<�|�<�O��n�<w�<xY#�,Y)�����W�s�F�_�,O�Jl�4���5�Ȓ��l�<��<�y���<��\��uF��օk��D��[;K��(UM��(vx� ��1���V��5(�RiqtF��kX��L��c�d��>�ڇ-ձ����Q���$U>J���6���A�#��m�.
+Ȃv�h�K��m'�b�p����^5.�;Wga�Q�O2��$i��=!�{�AR�}0<��=}L����[
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://script-at.iocnt.net/iam.js HTTP/1.1
+Host: script-at.iocnt.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+CONNECT s373.meetrics.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: s373.meetrics.net:443
+--------------------------------------------------------------------------------
+
+GET http://pipe.orf.at/zib100/zib100.json?origin=orf.at HTTP/1.1
+Host: pipe.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Origin: http://orf.at
+Connection: keep-alive
+If-Modified-Since: Fri, 25 May 2018 15:22:51 GMT
+If-None-Match: "12e-56d095756e8c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:06 GMT
+Server: Apache
+Connection: close
+ETag: "12e-56d095756e8c0"
+Cache-Control: no-cache
+Vary: Origin
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:06 GMT
+Content-Type: application/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: BLACKBIRD-SRC v0.9 0001
+Expires: Sun, 27 May 2018 13:22:06 GMT
+Cache-Control: privat, max-age=7200
+Cache-Control: pre-check=7200
+Last-Modified: Sun, 27 May 2018 11:22:06 GMT
+P3P: policyref=https://script.iocnt.net/p3p.xml, CP=NOI DSP NID PSAa OUR NOR UNI COM NAV
+Content-Encoding: gzip
+--------------------------------------------------------------------------------
+
+YY�?��-
+f��Z6UI6�.��3=�`p����3Y���P�y���k�6�f�����g���=n}}���c��>s����3i� ���~��H���LW4�<3���Y�A61;�)F�����?@�AsN �$`
+�3� ��(��
+��2���Uʅ�!��<�ƞa�V�C�{�a#BT"0x��
+�I�
+����cIq��g�Uw��������kox/�()� ����E:�1��# �omxG�BҒ^��/�.�-C�4�Mn�2��3�
+�������r��^�/b��J�#�!�^n�*'��q��/Q�	+h����C�D���&.��ۤ���2E/�p�YZh�&V�7�︼>	��O��K^�����v�G66�����L���4˝v�?�8���1)�Q��ٸj�e�n�V��aژ��5��>B`���<���5��a�}�P��Yv�'�t��V:&i*��@�Q�e|�ɼ�
+o����z�
+�X����:���Y8�d7����(�^��r��
+�i��)��_κח}�1O�)�º+�-�N�b8�St#L�ܫ��G��2F��3�m���(�FC�����jiȯ�M�Z�*�:5�����ud��*92g4|���U񟍠�d�Ĺv�\��I�|DQ*�ő%;U:O��)	S��Q��h�)5-O �#şF���Ȋ(��4�٢<�ӟ��Q����ueY>s������U6?B|���ϯ�1(@�
+>������V��|)Xaf�c��c|_��u���*X�{ݥ<�mU���wY)��~׺q?��Lו�LוA�n�d�������X?���ՠ'��$�]F
+ �󞡃���W3��6��@����@th�_��X��������\a��:���|2&�s�\��[�/>� ��on��l��=޶��k���ض��s[V��Z��F��i2�5m6�q{�����\������*��l���G~�*;eHc�b���`�C��5��y޿�ӛrO}�_
+8��q�� ����x/<�:>lnڍS@XA�>q�}@��j���ھXΎ�yr �������PI0&�0�d�'�!���>Γp�|��2���e��ّ�!��4}���"�17q�~���fQ�����H  �z������aLH$�S ��\	c�6��8�&�gI��}	c�@�d<qz���hd�Q��i���x�q�����'�~��O�^��U2�����\@��*]�
+�y��-_�d�,aCx|�:5Č�-�LD]�vɛ�7��������
+�BG*��U"���yXN�2����9��v��)��ZG�1)��u���Ꞣ����J&) �)볰�&�-���4o�� �<Z�4X�b��f� Q����4H�6�2C�d���x�2�Մ�f2���GLi/��YI���.���سVj���K=�sI�� �Vh>��+*KϤB/�,��6N*
+� ���c�혯4Y�G��y���J�P���\�wE���x��ygf��iJd�S<_��Y��+�Q�%�uԮ�Q��-�ٺ��a��̢��n2�ô�g�uU���ѓ/�}�w;�r?�9Ry/��v�oe�.s�˃�C��i�\�G���.r��w�$���X����3H�z�k3o)���*LL���5'aX�vOa�@�9�b�J�����4��"*!��,g��]��`�p����ҴC�Ǝ��W�I�Gǵ���Y�C,ΔmS�&x������Ջ�����cWY���E���+퉡��ׯ~6mX��,E*f�VG�0�!7jF|[�"X�+s�K$�P	��X?Aފ,��lr�]S��X9�2�|yqN'$��psqߕZM�X���鬒��5{gQ˳�W��Ơ��શ�4�-�)XHm�>%够���T� b�q:
+hD㒮�h�Z=&"��1%����� St�^D�����5��]" h<�շn$�@C��{��
+��Ȃqُ?z{�H�u��,��^�e���Z�.9����B <����#.}1َ ɕ_������8�ԹB��4!G�(	���_�@�Ged���������?l���������V뤽�=m����~s����9i�i�����D���{'��n�:��v��Nowg��@�f����As���n����Hs���:��{��~s��=m�������f��Z۽Np���A���k��������~�8���iW5��lu�����A��ഽ�lb;M�8��Z�y������
+��AK6r�n
+�www;��/����qY������on��{��.�d�ق�:�8����.4��;T��Vd��'�Nwp�wwQ�:9<�����z�õ���'{�;��v�y�'e����A������B(^����zk����w�D6�z�@���~��=�A\;����
+�z��:i��''���Ioo����Nv��;�X�緻苻����fSu��>�0zh�t0蟶��JFd@�I�a6����Q/�`�˥��'���H��)�&�=��9���3���9'V��)�w�+�\�'�t��dKg$LP�B�Z`�G��W�s5
+|vR�t��������Jc�gF���QE���*.^
+��ߥeB'��j~%���(ar�:5o�|�T��ұ^	���V/^b��W�ֱS#��@�8��9`9*��/��"��J��HRޏ^��|����Ƭ
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+POST http://ocsp.comodoca.com/ HTTP/1.1
+Host: ocsp.comodoca.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 84
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Last-Modified: Tue, 05 Aug 2014 10:48:21 GMT
+ETag: "90c-4ffdf9812c740"
+Accept-Ranges: bytes
+Content-Length: 2316
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:07 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+CONNECT s373.meetrics.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: s373.meetrics.net:443
+--------------------------------------------------------------------------------
+
+CONNECT ad.adworx.at:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: ad.adworx.at:443
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+POST http://ocsp.comodoca.com/ HTTP/1.1
+Host: ocsp.comodoca.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.5
+Content-Length: 84
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Connection: keep-alive
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+--------------------------------------------------------------------------------
+
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://info.cern.ch/ HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "40521bd2-286-4f1aadb3105c0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 27 May 2018 11:22:07 GMT
+Server: Apache
+Connection: close
+ETag: "40521bd2-286-4f1aadb3105c0"
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 04 Aug 2014 12:40:31 GMT
+If-None-Match: "90c-4ffcd0b5f0dc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Date: Sun, 27 May 2018 11:22:08 GMT
+Server: Apache
+Last-Modified: Tue, 05 Aug 2014 10:48:21 GMT
+ETag: "90c-4ffdf9812c740"
+Accept-Ranges: bytes
+Content-Length: 2316
+Cache-Control: max-age=2592000
+Expires: Tue, 26 Jun 2018 11:22:08 GMT
+Connection: close
+Content-Type: image/svg+xml
+--------------------------------------------------------------------------------
+
+CONNECT safebrowsing.googleapis.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: safebrowsing.googleapis.com:443
+--------------------------------------------------------------------------------
+
+POST http://ocsp.pki.goog/GTSGIAG3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 75
+Content-Type: application/ocsp-request
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+CONNECT s373.mxcdn.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: s373.mxcdn.net:443
+--------------------------------------------------------------------------------
+
+GET http://s248.meetrics.net/bb-mxad/gettag HTTP/1.1
+Host: s248.meetrics.net
+GET http://s373.meetrics.net/bb-mx/submit?/Ycc5B0BAAtwhFo0F0wF6vAvvEymFuhE0vBfpyF+k2FmywAx4AtwAztAy4AtxA16A04At2AwxA45A0tAyuAxwAytA1lE2jE10A2iELlnFByqhFx1Ay3A0yAwxAy5Aw2A42AwxA45A0BE/k0FmBxgAwqFpkF92AwxA45A0mAjwFpkF9PEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0mBwsFhjFl9BmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AmjEi9Bx0A5yA13AyzAyzAmzEp6Fl9BziFMquF4CL2wFBLl1FC/2xFoBluFnpFulFfmFpyFlmFv4FfzB5gAmlFh0F1yFlfFtvF6gB3pFukFv3FftFv6FpuFulFyzFjyFllFu4Fg3EpuFkvF3fFtvF6pFuuFlyFzjFylFluF5gB3pFukFv3FftFv6FwhFpuF0jFv1Fu0FgjEzzFftFv6FUkzFXCFAAAAAATUoJ8XAPAAAAAAAAAOAAAAGCAAAAATUoJ8XABPDAAAAAAAAB++mAZkBAFAy8Ey8ExBEGAx1A52A34AruO9APBAAFAA++mTuO9AZFAAFAx8Ey8ExBEGAx1A52A34Ar9fIAPAAAFAA++mT9fIASksFjLZAAAAAAAAAAAAEAAA++mAAAAAAAgAPhFzEFlmFh1Fs0FvPEBwBxzAz0A0fEPiFpfFziFfmFyvFu0FWAmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AAACAziFdXNAAAAgGAlJAFAAAuO9AAAFFo0F0wFz6BvvAwkFjuBzmFuhEwhFuhE0vBihFuuFlyFzvBvuFspFulFvPEBwBxzAz0A0PEipFvpEukFl4FuoE0tFs/BjsFpjFr0FhnF9oE00FwzFlzABvBvhEkuBhkF3vFy4FuhE0vBSlFhsFNlFkpFhvBhkFzvBjsFpjFrfFs4FuhEkzFvmEyvFu0FuvEymFuhE0vBmyFvuF0vBMxB4vAx0A5yA13AyzAyzAvQEvzFp0FpvFuzBvPEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0vBPBFwxAzzA00AfvFipFfzFifFmyFvuF0uBo0FtsFvzAx2Ax0Ah0Bh1B1zAx3Az0A23A51AwzAw0Ax0Az1A41A20AklBzGEo0F0wFzlBzBEvvA33F3uBviFpuBh0FvnEhyF0lFuwFshFulFyvBlzAG3F0fFtjFlzAEkFhuBnhFwsFhfFh3FhyFluBuvEymFukEzBFCATJFAAAAAAAAAAAAAAGAJGFSBFNFFdXNAAAAoGAlJAFAAA9fIAAAPAOPFfTFPVFSDFFfF22A21A0BECATJFAAAAAAAAAAAAAADAEJFWBF HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Host: s373.meetrics.net
+Accept: */*
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept-Language: en-US,en;q=0.5
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:09 GMT
+Content-Type: image/gif
+Content-Length: 43
+Connection: keep-alive
+Pragma: no-cache
+Cache-control: no-cache,no-store,must-revalidate
+Expires: Sun, 27 May 2018 11:22:08 GMT
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:09 GMT
+Content-Type: text/javascript
+Content-Length: 0
+Connection: keep-alive
+Cache-control: private,must-revalidate
+P3P: policyref="/w3c/p3p.xml", CP="NON DSP CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR IND UNI COM NAV STA"
+--------------------------------------------------------------------------------
+
+GET http://s373.meetrics.net/bb-mx/submit?/PG7sB5BAAtwhFo0F0wF6vAvvEymFuhE0vBfpyF+k2FmywAx4AtwAztAy4AtxA16A04At2AwxA45A0tAyuAxwAytA1lE2jE10A2iELlnFByqhFx1Ay3A0yAwxAy5AzwAw2AwxA45A0BE/k0FmBxgAwqFpkF92AwxA45A0mAjwFpkF9PEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0mBwsFhjFl9BmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AmjEi9BxyA01Ax0Ax0Aw4AmzEp6Fl9BziFMquFyBL2wFBLl1FC/2xFoBluFnpFulFfmFpyFlmFv4FfzB5gAmlFh0F1yFlfFtvF6gB3pFukFv3FftFv6FpuFulFyzFjyFllFu4Fg3EpuFkvF3fFtvF6pFuuFlyFzjFylFluF5gB3pFukFv3FftFv6FwhFpuF0jFv1Fu0FgjEzzFftFv6FUkzFXCFAAA5AATUoJ8XAPAAAAAA5AAOAAAAGDAA5AATUoJ8XABPCAAAAAAAABaNIAZtBAFAy8Ey8ExBEFAzzA2yA2BErb3CAPBAAFAAaNITb3CAZDAAFAx8Ey8ExBEFAzzA2yA2BEr9fIAPAAAFAAaNIT9fIASksFjLZAAAAAAAAAAAAEAAAaNIAAAAAAAgAPhFzEFlmFh1Fs0FvPEBwBxzAz0A0fEPiFpfFziFfmFyvFu0FWAmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AAACAziFdXNAAAAgGAlJAFAAAb3CAAAFFo0F0wFz6BvvAwkFjuBzmFuhEwhFuhE0vBihFuuFlyFzvBvuFspFulFvPEBwBxzAz0A0PEipFvpEukFl4FuoE0tFs/BjsFpjFr0FhnF9oE00FwzFlzABvBvhEkuBhkF3vFy4FuhE0vBSlFhsFNlFkpFhvBhkFzvBjsFpjFrfFs4FuhEkzFvmEyvFu0FuvEymFuhE0vBmyFvuF0vBMxB4vAxyA01Ax0Ax0Aw4AvQEvzFp0FpvFuzBvPEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0vBPBFwxAzzA00AfvFipFfzFifFmyFvuF0uBo0FtsFvzAx2Ax0Ah0Bh1B1zAx3Az0A23A51AwzAw0Ax0Az1A41A20AklBzGEo0F0wFzlBzBEvvA33F3uBviFpuBh0FvnEhyF0lFuwFshFulFyvBlzAG3F0fFtjFlzAEkFhuBnhFwsFhfFh3FhyFluBuvEymFukEzBFCATJFAAAAAAAAAAAAAAGAJGFSBFNFFdXNAAAAoGAlJAFAAA9fIAAAPAOPFfTFPVFSDFFfF22A21A0BECATJFAAAAAAAAAAAAAADAEJFWBF HTTP/1.1
+GET http://s248.meetrics.net/bb-mxad/gettag HTTP/1.1
+Host: s248.meetrics.net
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Referer: http://orf.at/
+Cache-Control: max-age=0
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+GET http://s373.meetrics.net/data?/Ycc5C+FAAKktFLkqFFlqwF2wAx4A50AyqhFx1Ay3A0yAwxAy5Aw2A42AwxA45A0BE/k0FmBxgAwqFpkF92AwxA45A0mAjwFpkF9PEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0mBwsFhjFl9BmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AmjEi9Bx0A5yA13AyzAyzAmzEp6Fl9BziFOprFm8SCOqwFm8SClqwF2wAx4A50ALkmFBTkzFARksFA HTTP/1.1
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:09 GMT
+Content-Type: text/javascript
+Content-Length: 0
+Connection: keep-alive
+Cache-control: private,must-revalidate
+P3P: policyref="/w3c/p3p.xml", CP="NON DSP CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR IND UNI COM NAV STA"
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:09 GMT
+Content-Type: image/gif
+Content-Length: 43
+Connection: keep-alive
+Pragma: no-cache
+Cache-control: no-cache,no-store,must-revalidate
+Expires: Sun, 27 May 2018 11:22:08 GMT
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:09 GMT
+Content-Type: image/gif
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-control: no-cache,no-store,must-revalidate
+Pragma: no-cache
+Expires: Sun, 27-May-18 11:22:08 GMT
+--------------------------------------------------------------------------------
+
+GET http://s373.meetrics.net/data?/PG7sCIGAAKktFLkqFFlqwF2wAx4A50AyqhFx1Ay3A0yAwxAy5AzwAw2AwxA45A0BE/k0FmBxgAwqFpkF92AwxA45A0mAjwFpkF9PEhzFElFmhF1sF0vBPBFwxAzzA00AfPFipFfzFifFmyFvuF0mBwsFhjFl9BmyFvuF0uBvyFmuBh0FvmEyvFu0FvMEx4AmjEi9BxyA01Ax0Ax0Aw4AmzEp6Fl9BziFOprFm8SCOqwFm8SClqwF2wAx4A50ALkmFBTkzFARksFA HTTP/1.1
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:10 GMT
+Content-Type: image/gif
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-control: no-cache,no-store,must-revalidate
+Pragma: no-cache
+Expires: Sun, 27-May-18 11:22:09 GMT
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Sun, 27 May 2018 11:22:10 GMT
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 247
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+GET http://s373.meetrics.net/data?/PG7sDJMAALklFBLl1FDLq1FBKq2FNq3F5UBNq4FeUBKq6FL2mFBLkqFKtkyB2wAx4A50A6wEylF0pFtlF2qoFx1Ay3A0yAwxAyzA44AzlEk5FokF6zB3iEqBFTkzF8GKHA5AATUoJ8XACPyBAXNAAAAPb3CAPBAAXNAAAAP9fIAPJBAWVAAMAcAAAARksFA HTTP/1.1
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:10 GMT
+Content-Type: image/gif
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-control: no-cache,no-store,must-revalidate
+Pragma: no-cache
+Expires: Sun, 27-May-18 11:22:09 GMT
+--------------------------------------------------------------------------------
+
+GET http://wetter.orf.at/static/wetter/3_0/images/icons/day/svg/100000.svg HTTP/1.1
+Host: wetter.orf.at
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Connection: keep-alive
+If-Modified-Since: Mon, 04 Aug 2014 12:40:31 GMT
+If-None-Match: "90c-4ffcd0b5f0dc0"
+Cache-Control: max-age=0
+--------------------------------------------------------------------------------
+
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Sun, 27 May 2018 11:22:11 GMT
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 247
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+POST http://s373.meetrics.net/bb-mx/submit?/t0xgF8JMALklFCTkzFtPDhKAAAAAAHAAAAGAAA5AATUoJ8XABPUDAAAAAAAIAAAARksFA HTTP/1.1
+Host: s373.meetrics.net
+POST http://s373.meetrics.net/bb-mx/submit?/GuilGujLALklFCTkzFeGYEFAAATUoJ8XABPUcAAAAAAAIAAAARksFA HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Content-Length: 0
+Content-Type: text/plain;charset=UTF-8
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+Host: s373.meetrics.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://orf.at/
+Content-Length: 0
+Content-Type: text/plain;charset=UTF-8
+Connection: keep-alive
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:12 GMT
+Content-Type: image/gif
+Content-Length: 43
+Connection: keep-alive
+Pragma: no-cache
+Cache-control: no-cache,no-store,must-revalidate
+Expires: Sun, 27 May 2018 11:22:11 GMT
+P3P: policyref="/w3c/p3p.xml", CP="NON DSP CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR IND UNI COM NAV STA"
+--------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 May 2018 11:22:12 GMT
+Content-Type: image/gif
+Content-Length: 43
+Connection: keep-alive
+Pragma: no-cache
+Cache-control: no-cache,no-store,must-revalidate
+Expires: Sun, 27 May 2018 11:22:11 GMT
+P3P: policyref="/w3c/p3p.xml", CP="NON DSP CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR IND UNI COM NAV STA"
+--------------------------------------------------------------------------------
+
