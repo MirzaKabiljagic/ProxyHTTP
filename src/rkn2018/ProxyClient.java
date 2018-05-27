@@ -117,10 +117,10 @@ class ProxyClient extends Thread {
 
                             if (parse.getMethod().equals("CONNECT")) {
                                 System.out.println(host);
-                                String new_host = host.split(":")[0];
-                                System.out.println("Host https is: " + new_host);
+                                //String new_host = host.split(":")[0];
+                                System.out.println("Host https is: " + host);
 
-                                SocketServer = new Socket(new_host, 443);
+                                SocketServer = new Socket(host, 443);
                                 setTimeOut(SocketServer);
                                 //output response
                                 DataOutputStream out = new DataOutputStream(toClient);
@@ -131,9 +131,16 @@ class ProxyClient extends Thread {
                             }
                             else
                             {
-                                String new_host = host.split(":")[0];
-                                System.out.println("Host http is: " + new_host);
-                                SocketServer = new Socket(host, 80);
+                                //String new_host = host.split(":")[0];
+                                System.out.println("Host http is: " + host);
+                                if(parse.isSetNewPort())
+                                    SocketServer = new Socket(host, parse.getNew_port());
+
+                                else
+
+                                    SocketServer = new Socket(host, 80);
+
+
                                 setTimeOut(SocketServer);
 
                             }

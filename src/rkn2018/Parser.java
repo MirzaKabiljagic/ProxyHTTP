@@ -28,9 +28,10 @@ public class Parser {
     public static int lengthOfChunk = 0;
     public static int indexOfLF = -1;
 
-
+    public boolean setNewPort = false;
     private boolean parsed = false;
     private boolean isParsed;
+    public String new_port;
 
     private HashMap<String, String> header_response;
 
@@ -40,6 +41,7 @@ public class Parser {
         header_response = new HashMap<>();
         helper_response = "";
         isParsed = false;
+        new_port = "";
     }
 
     public String getMethod() { return method; }
@@ -47,6 +49,17 @@ public class Parser {
     public boolean getParsed() { return parsed; }
 
     public boolean isParsed(){ return isParsed; }
+
+    public boolean isSetNewPort()
+    {
+        return  setNewPort;
+    }
+
+    public int getNew_port() {
+
+        new_port = new_port.replaceAll("\\s+", "");
+        return Integer.parseInt(new_port);
+    }
 
     public String getResponseValues(String name)
     {
@@ -130,8 +143,19 @@ public class Parser {
                 else
                 {
                     arrayParser = input.split(": ");
-                    if(arrayParser.length == 2)
-                        header_response.put(arrayParser[0], arrayParser[1]);
+                    if(arrayParser.length == 2) {
+                        //check if exsists port at the end
+                        if (arrayParser[0].contains("Host") && arrayParser[1].contains(":")) {
+                            //System.out.println("uso sam");
+                            String[] new_host = arrayParser[1].split(":");
+                            header_response.put(arrayParser[0], new_host[0]);
+                            new_port = new_host[1];
+                            setNewPort = true;
+
+                        }
+                        else
+                            header_response.put(arrayParser[0], arrayParser[1]);
+                    }
                     else
                         System.out.println("Size of arrayParser bigger than 2 and is: " + arrayParser.length);
                 }
