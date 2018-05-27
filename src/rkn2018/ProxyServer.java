@@ -57,6 +57,14 @@ public class ProxyServer extends Thread{
                 if (parse.getParsed() == true) {
 
 
+                    byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+                    byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+                    //plugins
+                    plugins(parse, BodyReturn, HeaderReturn);
+                    if(!transferPlugin)
+                       return;
+
+
                     if (ProxyClient.statusCheck(parse))
                         break;
 
@@ -76,28 +84,7 @@ public class ProxyServer extends Thread{
             e.printStackTrace();
         }
 
-        //byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
-        //byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
-        //plugins
-        //plugins(parse, BodyReturn, HeaderReturn);
-        //if(!transferPlugin)
-        //return;
-
-
-                    /*if (!Proxy.jsInjectPath.isEmpty()) {
-                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
-
-                        try {
-                            BodyReturn = Injector.toInject(BodyReturn, parse);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
-        //byte[] page = parse.mergeHB(HeaderReturn, BodyReturn);
-        //write to client
-
-
-        try
+         try
         {
             //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
             toClient.write(outputStream.toByteArray(), 0, outputStream.size());
@@ -124,49 +111,63 @@ public class ProxyServer extends Thread{
         HeaderReturn_ = helper.addCookies(new String(HeaderReturn_)).getBytes();
 
         String contentTypeValue = parse_.valuesFromField().get(parse_.CONTENT_TYPE);
-        if(contentTypeValue != null)
-        {
+        if(contentTypeValue != null) {
             String[] parsedValues = contentTypeValue.split(";");
 
             //remove whitespaces
             int index = 0;
-            for(String i : parsedValues)
-            {
+            for (String i : parsedValues) {
                 parsedValues[index] = i.replaceAll("\\s+", "");
                 index++;
             }
 
             boolean htmlExists = false;
             //check if exists text/html
-            for(String i : parsedValues)
-            {
-                if(i.equals("text/html"))
+            for (String i : parsedValues) {
+                if (i.equals("text/html"))
                     htmlExists = true;
             }
 
-            if(htmlExists)
-            {
+            if (htmlExists) {
 
                 try {
                     BodyReturn_ = replaceContent(parse_, BodyReturn_);
-                    if(checkChunk(parse_))
-                    {
+                    if (checkChunk(parse_)) {
                         String encodingValue = parse_.getEncoding();
                         HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encodingValue);
                         HeaderReturn_ = helper.SetContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+                    } else {
+                        HeaderReturn_ = helper.ChangeContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+                    }
+
+                } catch (IOException e) {
+                    System.out.println("Can not replace content");
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+            if (!Proxy.jsInjectPath.isEmpty()) {
+                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
+
+                try {
+                    BodyReturn_ = Injector.toInject(BodyReturn_, parse_);
+
+                    if(checkChunk(parse_))
+                    {
+                       String encoding =  parse_.getEncoding();
+                       HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encoding);
+                       HeaderReturn_ = helper.SetContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+
                     }
                     else
                     {
                         HeaderReturn_ = helper.ChangeContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
                     }
-
-                }
-                catch (IOException e)
-                {
-                    System.out.println("Can not replace content");
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
             byte[] mergeHB = parse_.mergeHB(HeaderReturn_, BodyReturn_);
@@ -174,17 +175,17 @@ public class ProxyServer extends Thread{
             {
                 toClient.write(mergeHB, 0, mergeHB.length);
                 toClient.flush();
-                transferPlugin = true;
+
             }
             catch (IOException e) {
 
                 System.out.println("Can not transfer data");
                 e.printStackTrace();
+                transferPlugin = false;
+
             }
 
-
-
-        }
+        transferPlugin = true;
 
     }
     //******************************************************************************************************************

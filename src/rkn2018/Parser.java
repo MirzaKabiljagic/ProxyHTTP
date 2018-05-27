@@ -102,6 +102,7 @@ public class Parser {
     public void startParse(byte[] inputClient)
             throws IOException
     {
+        System.out.println(inputClient);
         if(!isParsed())
         {
             System.out.println("Starting with parsing!");
@@ -137,7 +138,7 @@ public class Parser {
                 count++;
             }
             helper_response += newline;
-
+            System.out.println("BORJ jEDANNNNNNNNNNNNNNNNNNNNNNNNNNN" + helper_response);
             isParsed = true;
 
             FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
@@ -323,7 +324,7 @@ public class Parser {
         String encoding = valuesFromField().get(CONTENT_TYPE);
         if(encoding != null)
         {
-            encoding = encoding.replaceAll("\\s+", "");
+            //encoding = encoding.replaceAll("\\s+", "");
             String[] parsed = encoding.split(";");
 
             //find value of char-set
