@@ -69,10 +69,13 @@ class ProxyClient extends Thread {
 
         setTimeOut(SocketClient);
 
-        try {
+        try
+        {
             fromClient = SocketClient.getInputStream();
             toClient = SocketClient.getOutputStream();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Not possible to streams from the client");
             closeConnection();
             return;
@@ -140,14 +143,17 @@ class ProxyClient extends Thread {
                             closeConnection();
                             return;
                         }
-                        try {
+                        try
+                        {
                             System.out.println("Input/output stream! Output: " +
                                     SocketServer.getOutputStream() + " Input: " + SocketServer.getInputStream());
 
                             toServer = SocketServer.getOutputStream();
                             fromServer = SocketServer.getInputStream();
 
-                        } catch (IOException e) {
+                        }
+                        catch (IOException e)
+                        {
                             System.out.println("Can't reach data from server");
                             closeConnection();
                             return;

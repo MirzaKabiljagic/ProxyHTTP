@@ -35,7 +35,7 @@ public class PluginHelper {
         return returnCookies;
     }
     //******************************************************************************************************************
-    String SetContentLength(String input, int length)
+    String contentLengthSetting(String input, int length)
     {
         String[] parsed = input.split("\r\n");
         String returnString = "";
@@ -58,7 +58,7 @@ public class PluginHelper {
     }
 
     //******************************************************************************************************************
-    String ChangeContentLength(String input, int length)
+    String editContentLength(String input, int length)
     {
         String[] parsed = input.split("\r\n");
         String returnString = "";

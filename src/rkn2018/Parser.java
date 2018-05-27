@@ -138,7 +138,6 @@ public class Parser {
                 count++;
             }
             helper_response += newline;
-            System.out.println("BORJ jEDANNNNNNNNNNNNNNNNNNNNNNNNNNN" + helper_response);
             isParsed = true;
 
             FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
@@ -255,7 +254,6 @@ public class Parser {
                     input[i + 1] == 10 &&
                     input[i] == 13)
             {
-                //i+=3;
                 i = input.length -3;
                 break;
             }
@@ -284,47 +282,12 @@ public class Parser {
         return holder;
     }
     //******************************************************************************************************************
-    public String GZIPDecompression(byte[] compressed, String encoding) throws IOException {
-        ByteArrayInputStream stream = new ByteArrayInputStream(compressed);
-        GZIPInputStream gzip = new GZIPInputStream(stream);
-        InputStreamReader inputRead = new InputStreamReader(gzip, encoding);
-        BufferedReader bufferRead = new BufferedReader(inputRead);
-        StringBuilder output = new StringBuilder();
-        String line;
-        try {
-            while((line = bufferRead.readLine()) != null)
-            {
-                output.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stream.close();
-        bufferRead.close();
-        gzip.close();
-        String decompressed = output.toString();
-        return decompressed;
-    }
-    //******************************************************************************************************************
-    public byte[] GZIPCompression(String webPage, String encoding) throws IOException {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        GZIPOutputStream GZIPOut = new GZIPOutputStream(stream);
-        try {
-            GZIPOut.write(webPage.getBytes(encoding));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        GZIPOut.close();
-        byte[] compressed = stream.toByteArray();
-        return compressed;
-    }
-    //******************************************************************************************************************
+
     public String getEncoding()
     {
         String encoding = valuesFromField().get(CONTENT_TYPE);
         if(encoding != null)
         {
-            //encoding = encoding.replaceAll("\\s+", "");
             String[] parsed = encoding.split(";");
 
             //find value of char-set
@@ -338,7 +301,6 @@ public class Parser {
                }
             }
         }
-
 
         return  "UTF-8";
     }

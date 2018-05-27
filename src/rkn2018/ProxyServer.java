@@ -1,11 +1,9 @@
 package rkn2018;
 
 import java.io.*;
-import java.net.SocketException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -86,9 +84,7 @@ public class ProxyServer extends Thread{
 
          try
         {
-            //toClient.write(outputStream.toByteArray(), 0, outputStream.size());
             toClient.write(outputStream.toByteArray(), 0, outputStream.size());
-            //toClient.write(page, 0, page.length);
             toClient.flush();
         }
 
@@ -135,9 +131,9 @@ public class ProxyServer extends Thread{
                     if (checkChunk(parse_)) {
                         String encodingValue = parse_.getEncoding();
                         HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encodingValue);
-                        HeaderReturn_ = helper.SetContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+                        HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length).getBytes();
                     } else {
-                        HeaderReturn_ = helper.ChangeContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+                        HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
                     }
 
                 } catch (IOException e) {
@@ -148,42 +144,20 @@ public class ProxyServer extends Thread{
             }
         }
 
-            if (!Proxy.jsInjectPath.isEmpty()) {
-                        ScriptInjector Injector = new ScriptInjector(Proxy.jsInjectPath);
+        byte[] mergeHB = parse_.mergeHB(HeaderReturn_, BodyReturn_);
+        try
+        {
+            toClient.write(mergeHB, 0, mergeHB.length);
+            toClient.flush();
 
-                try {
-                    BodyReturn_ = Injector.toInject(BodyReturn_, parse_);
+        }
+        catch (IOException e) {
 
-                    if(checkChunk(parse_))
-                    {
-                       String encoding =  parse_.getEncoding();
-                       HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encoding);
-                       HeaderReturn_ = helper.SetContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+            System.out.println("Can not transfer data");
+            e.printStackTrace();
+            transferPlugin = false;
 
-                    }
-                    else
-                    {
-                        HeaderReturn_ = helper.ChangeContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            byte[] mergeHB = parse_.mergeHB(HeaderReturn_, BodyReturn_);
-            try
-            {
-                toClient.write(mergeHB, 0, mergeHB.length);
-                toClient.flush();
-
-            }
-            catch (IOException e) {
-
-                System.out.println("Can not transfer data");
-                e.printStackTrace();
-                transferPlugin = false;
-
-            }
+        }
 
         transferPlugin = true;
 

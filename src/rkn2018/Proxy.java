@@ -1,5 +1,6 @@
 package rkn2018;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,9 +41,18 @@ public class Proxy {
 
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
-        //ProxyConnection serverConnect = new ProxyConnection();
-        //serverConnect.startServer();
-		ProxyConnection proxyConnection = new ProxyConnection(this);
+		ProxyConnection proxyConnection;
+		proxyConnection = new ProxyConnection(this);
+		System.out.println("Starting the connection");
+		try {
+
+			proxyConnection.startServer();
+		}
+		catch(IOException e)
+		{
+			System.out.print("It is not possible to run server \n");
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) throws Exception {
