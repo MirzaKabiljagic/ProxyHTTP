@@ -94,8 +94,8 @@ class ProxyClient extends Thread {
                     connectionCheck(toServer,readBytes,requestBuffer);
                     continue;
                 }
-
-                byte[] parseArray = outputStream.toByteArray();
+                byte[] parseArray;
+                parseArray = outputStream.toByteArray();
                 parse.startParse(parseArray, "request");
 
                 //flag checking for parsing
@@ -119,7 +119,6 @@ class ProxyClient extends Thread {
                                 System.out.println(host);
                                 //String new_host = host.split(":")[0];
                                 System.out.println("Host https is: " + host);
-
                                 SocketServer = new Socket(host, 443);
                                 setTimeOut(SocketServer);
                                 //output response
