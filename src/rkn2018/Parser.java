@@ -4,10 +4,9 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
 
-
 public class Parser {
 
-
+    private Proxy proxy_instance;
 
     private enum situationOfChunked {
         CHUNK_PARSED,
@@ -114,11 +113,11 @@ public class Parser {
     public void startParse(byte[] inputClient, String requestResponse)
             throws IOException
     {
-        System.out.println(inputClient);
         if(!isParsed())
         {
             System.out.println("Starting with parsing!");
             BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputClient)));
+
             String input;
             String newline = "\r\n";
             int count = 0;
