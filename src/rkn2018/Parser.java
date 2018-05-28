@@ -28,7 +28,7 @@ public class Parser {
     public static int lengthOfChunk = 0;
     public static int indexOfLF = -1;
 
-    public boolean setNewPort = false;
+    public boolean setNewPort;
     private boolean parsed = false;
     private boolean isParsed;
     public String new_port;
@@ -42,6 +42,7 @@ public class Parser {
         helper_response = "";
         isParsed = false;
         new_port = "";
+        setNewPort = false;
     }
 
     public String getMethod() { return method; }
