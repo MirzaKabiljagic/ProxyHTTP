@@ -143,7 +143,7 @@ public class ProxyServer extends Thread{
             boolean htmlExists = true;
             //check if exists text/html
             for (String i : parsedValues) {
-                if (i.equals("text/html"))
+                if (i.contains("text/html"))
                     htmlExists = true;
             }
 
