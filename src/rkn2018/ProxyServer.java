@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.*;
 
 public class ProxyServer extends Thread{
 
@@ -100,6 +102,7 @@ public class ProxyServer extends Thread{
         //Plugin3
         PluginHelper helper = new PluginHelper(proxy_instance);
         //add cookies
+        //System.out.println("+++++++++++++++++++++++++++++++++++++"+parse_.valuesFromField()+"++++++++++++++++++++++++++++++++++++++++++++++++++++");
         HeaderReturn_ = helper.addCookies(new String(HeaderReturn_)).getBytes();
 
         String contentTypeValue = parse_.valuesFromField().get(parse_.CONTENT_TYPE);
@@ -133,6 +136,16 @@ public class ProxyServer extends Thread{
                     HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
 
             }
+            if(!proxy_instance.getJsInjectPath().isEmpty())
+            {
+                BodyReturn_ = injectJS(parse_, BodyReturn_);
+                if (checkChunk(parse_)) {
+                    String encodingValue = parse_.getEncoding();
+                    HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length, encodingValue).getBytes();
+                }
+                else
+                    HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
+            }
         }
 
         byte[] mergeHB = parse_.mergeHB(HeaderReturn_, BodyReturn_);
@@ -156,6 +169,7 @@ public class ProxyServer extends Thread{
     //******************************************************************************************************************
     public byte[] replaceContent(Parser parse__, byte[] replaceBody_)
     {
+        //System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
         String replacedContent = "";
         String encoding = parse__.getEncoding();
@@ -163,7 +177,7 @@ public class ProxyServer extends Thread{
         byte[] helper_buffer = new byte[1024];
         int byteRead;
         HashMap<String, String> getContent = new HashMap<>(proxy_instance.getReplacements());
-
+        //System.out.println("1111111111111111111111111111111111111111"+getContent+"111111111111111111111111111111111111111111111111");
         if(checkChunk(parse__)) {
             try {
                 replaceBody_ = parse__.dataFromChunk(replaceBody_);
@@ -251,6 +265,88 @@ public class ProxyServer extends Thread{
         return  false;
     }
 
+    public byte[] injectJS(Parser parse__, byte[] replaceBody_) {
+        String encoding = parse__.getEncoding();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] helper_buffer = new byte[1024];
+        int byteRead;
+        String toInjectTo = new String();
+        if (checkChunk(parse__)) {
+            try {
+                replaceBody_ = parse__.dataFromChunk(replaceBody_);
+            } catch (IOException e) {
+                System.out.println("Can not read chunks");
+                e.printStackTrace();
+            }
+
+        }
+
+        if (parse__.checkGZIP()) {
+            //decompress gzip to html
+            try {
+                ByteArrayInputStream inputToGZP = new ByteArrayInputStream(replaceBody_);
+                GZIPInputStream inputGZIP = new GZIPInputStream(inputToGZP);
+
+                while ((byteRead = inputGZIP.read(helper_buffer)) != -1) {
+                    outputStream.write(helper_buffer, 0, byteRead);
+
+                }
+                toInjectTo = outputStream.toString(encoding);
+                inputGZIP.close();
+                outputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            toInjectTo = new String(replaceBody_);
+        }
+
+        String jsPath = proxy_instance.getJsInjectPath();
+        File file = new File(jsPath);
+        FileInputStream jsFileInputStream;
+        byte[] fileBytes = new byte[(int) file.length()];
+        ;
+        try {
+            jsFileInputStream = new FileInputStream(file);
+            if (jsFileInputStream.read(fileBytes) == -1) {
+                System.out.println("Invalid JavaScript file!");
+                return toInjectTo.getBytes();
+            }
+            jsFileInputStream.close();
+        } catch (Exception e) {
+            System.out.println("Error while opening the JavaScript file!" + e);
+        }
+        String script = new String(fileBytes);
+        Document doc = Jsoup.parse(toInjectTo);
+        Element head = doc.head();
+        head.append("<script type=\"text/javascript\">" + script + "</script>");
+
+        if (parse__.checkGZIP()) {
+            try {
+                ByteArrayOutputStream outputStream_new = new ByteArrayOutputStream();
+                GZIPOutputStream outputGZIP = new GZIPOutputStream(outputStream_new);
+                outputGZIP.write(toInjectTo.getBytes(encoding));
+                outputGZIP.close();
+
+                return outputStream_new.toByteArray();
+            } catch (IOException e) {
+                System.out.println("Can not compress html to gzip");
+                e.printStackTrace();
+            }
+
+        } else {
+            try {
+                return toInjectTo.getBytes(encoding);
+            } catch (IOException e) {
+                System.out.println("Can not return replaced content");
+                e.printStackTrace();
+            }
+
+
+        }
+        return new byte[0];
+    }
 
 
 
