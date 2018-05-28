@@ -114,8 +114,7 @@ public class ProxyServer extends Thread{
     public void plugins(Parser parse_, byte[] BodyReturn_, byte[]HeaderReturn_)
     {
         //Plugin3
-        String test = "";
-        byte[] testbytes = HeaderReturn_;
+
         PluginHelper helper = new PluginHelper(proxy_instance);
         //add cookies
         //System.out.println("+++++++++++++++++++++++++++++++++++++"+parse_.getHeader_response()+"++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -141,7 +140,7 @@ public class ProxyServer extends Thread{
 
 
 
-            boolean htmlExists = false;
+            boolean htmlExists = true;
             //check if exists text/html
             for (String i : parsedValues) {
                 if (i.equals("text/html"))
@@ -149,9 +148,12 @@ public class ProxyServer extends Thread{
             }
 
             if (htmlExists) {
-                //System.out.println("ispod html");
 
-                //BodyReturn_ = replaceContent(parse_, BodyReturn_);
+                 if(!proxy_instance.getReplacements().isEmpty())
+                 {
+                     BodyReturn_ = replaceContent(parse_, BodyReturn_);
+                 }
+
                 if(!proxy_instance.getJsInjectPath().isEmpty()) {
                     BodyReturn_ = injectJS(parse_, BodyReturn_);
                 }
@@ -284,7 +286,7 @@ public class ProxyServer extends Thread{
 
     public byte[] injectJS(Parser parse__, byte[] replaceBody_) {
 
-        //System.out.println("-----------------------------------"+proxy_instance.getJsInjectPath()+"-----------------------------------------------");
+        System.out.println("-----------------------------------"+proxy_instance.getJsInjectPath()+"-----------------------------------------------");
         String encoding = parse__.getEncoding();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] helper_buffer = new byte[1024];

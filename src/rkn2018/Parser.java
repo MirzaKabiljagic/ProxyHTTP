@@ -135,7 +135,11 @@ public class Parser {
             while((input = inputBuffer.readLine()) != null && !input.isEmpty())
             {
                 helper_response += input + newline;
-                FileWriter.caller.inputData(input);
+                if(!proxy_instance.getDumpPath().isEmpty())
+                {
+                    FileWriter.caller.inputData(input);
+                }
+
 
                 if(count == 0)
                 {
@@ -175,8 +179,9 @@ public class Parser {
            // System.out.println(requestResponse + " ------------------------------------------------------------   " + helper_response);
 
 
-
-            FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
+            if(!proxy_instance.getDumpPath().isEmpty()) {
+                FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
+            }
 
             if(contentLenCheck(inputClient)){
                 parsed = true;
@@ -281,21 +286,7 @@ public class Parser {
     //******************************************************************************************************************
     public byte[] headerOrBodyReturn(byte[] input, boolean headerOrBody)
     {
-        if(!headerOrBody) {
-            int headerEndIndex = 0;
-            for (; headerEndIndex < input.length - 3; headerEndIndex++) {
-                if (input[headerEndIndex] == 13 &&
-                        input[headerEndIndex + 1] == 10 &&
-                        input[headerEndIndex + 2] == 13 &&
-                        input[headerEndIndex + 3] == 10) {
-                    headerEndIndex += 3;
-                    break;
-                }
-            }
-            return Arrays.copyOfRange(input, headerEndIndex + 1, input.length);
-        }
-
-        //byte[] headerBody = new byte[];
+        byte[] headerBody;
         int i;
         for(i = 0; i < input.length - 3; i++)
         {
@@ -312,11 +303,15 @@ public class Parser {
         //When headerOrBody = true then header return otherwise return body
         if(headerOrBody)
         {
-            byte[] headerBody = Arrays.copyOfRange(input, 0, i + 1);
-            return  headerBody;
+            headerBody = Arrays.copyOfRange(input, 0, i + 1);
+        }
+        else
+        {
+            headerBody = Arrays.copyOfRange(input, i + 1, input.length);
         }
 
-        return  null;
+        return  headerBody;
+
     }
     //******************************************************************************************************************
 
@@ -349,7 +344,7 @@ public class Parser {
             }
         }
 
-        return  encoding;//"UTF-8";
+        return  "UTF-8";
     }
 
     //******************************************************************************************************************
