@@ -1,7 +1,5 @@
 package rkn2018;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;

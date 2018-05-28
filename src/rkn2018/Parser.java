@@ -1,12 +1,8 @@
 package rkn2018;
 
 import java.io.*;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.nio.charset.StandardCharsets;
-import java.nio.charset.StandardCharsets;
 
 
 public class Parser {
