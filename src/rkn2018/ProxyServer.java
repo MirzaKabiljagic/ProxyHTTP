@@ -80,7 +80,21 @@ public class ProxyServer extends Thread{
             System.out.println("It is not possible to read data from server");
             e.printStackTrace();
         }
-
+        /*
+        byte[] parseArray = outputStream.toByteArray();
+        //start parsing
+        try {
+            parse.startParse(parseArray, "response");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+        byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+        //plugins
+        plugins(parse, BodyReturn, HeaderReturn);
+        if(!transferPlugin)
+            return;
+*/
        try
         {
             toClient.write(outputStream.toByteArray(), 0, outputStream.size());
@@ -100,14 +114,22 @@ public class ProxyServer extends Thread{
     public void plugins(Parser parse_, byte[] BodyReturn_, byte[]HeaderReturn_)
     {
         //Plugin3
+        String test = "";
+        byte[] testbytes = HeaderReturn_;
         PluginHelper helper = new PluginHelper(proxy_instance);
         //add cookies
-        //System.out.println("+++++++++++++++++++++++++++++++++++++"+parse_.valuesFromField()+"++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        //System.out.println("+++++++++++++++++++++++++++++++++++++"+parse_.getHeader_response()+"++++++++++++++++++++++++++++++++++++++++++++++++++++");
         HeaderReturn_ = helper.addCookies(new String(HeaderReturn_)).getBytes();
 
-        String contentTypeValue = parse_.valuesFromField().get(parse_.CONTENT_TYPE);
+        String contentTypeValue = parse_.valuesFromField().get(3);
 
-        if(contentTypeValue != null) {
+        ///////////////////////////////////////////////////////////////////////////////
+        String content_type = parse_.getResponseValues("Content-Type");
+        if(content_type != null)
+            content_type.replaceAll("\\s+", "");
+
+        if(parse_.getHeader_response().containsKey("text/html")){
+
             String[] parsedValues = contentTypeValue.split(";");
 
             //remove whitespaces
@@ -116,6 +138,8 @@ public class ProxyServer extends Thread{
                 parsedValues[index] = i.replaceAll("\\s+", "");
                 index++;
             }
+
+
 
             boolean htmlExists = false;
             //check if exists text/html
@@ -127,7 +151,10 @@ public class ProxyServer extends Thread{
             if (htmlExists) {
                 //System.out.println("ispod html");
 
-                BodyReturn_ = replaceContent(parse_, BodyReturn_);
+                //BodyReturn_ = replaceContent(parse_, BodyReturn_);
+                if(!proxy_instance.getJsInjectPath().isEmpty()) {
+                    BodyReturn_ = injectJS(parse_, BodyReturn_);
+                }
                 if (checkChunk(parse_)) {
                     String encodingValue = parse_.getEncoding();
                     HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length, encodingValue).getBytes();
@@ -135,16 +162,6 @@ public class ProxyServer extends Thread{
                 else
                     HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
 
-            }
-            if(!proxy_instance.getJsInjectPath().isEmpty())
-            {
-                BodyReturn_ = injectJS(parse_, BodyReturn_);
-                if (checkChunk(parse_)) {
-                    String encodingValue = parse_.getEncoding();
-                    HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length, encodingValue).getBytes();
-                }
-                else
-                    HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
             }
         }
 
@@ -169,7 +186,7 @@ public class ProxyServer extends Thread{
     //******************************************************************************************************************
     public byte[] replaceContent(Parser parse__, byte[] replaceBody_)
     {
-        //System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+        
 
         String replacedContent = "";
         String encoding = parse__.getEncoding();
@@ -266,6 +283,8 @@ public class ProxyServer extends Thread{
     }
 
     public byte[] injectJS(Parser parse__, byte[] replaceBody_) {
+
+        //System.out.println("-----------------------------------"+proxy_instance.getJsInjectPath()+"-----------------------------------------------");
         String encoding = parse__.getEncoding();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] helper_buffer = new byte[1024];
@@ -281,27 +300,31 @@ public class ProxyServer extends Thread{
 
         }
 
-        if (parse__.checkGZIP()) {
+        if ( parse__.checkGZIP()) {
             //decompress gzip to html
             try {
+
                 ByteArrayInputStream inputToGZP = new ByteArrayInputStream(replaceBody_);
                 GZIPInputStream inputGZIP = new GZIPInputStream(inputToGZP);
-
-                while ((byteRead = inputGZIP.read(helper_buffer)) != -1) {
+                while ((byteRead = inputGZIP.read(helper_buffer)) != -1)
+                {
                     outputStream.write(helper_buffer, 0, byteRead);
 
                 }
+
                 toInjectTo = outputStream.toString(encoding);
                 inputGZIP.close();
                 outputStream.close();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else
+            {
+                //System.out.println("=================================================================================");
             toInjectTo = new String(replaceBody_);
+                //return null;
         }
-
+        //System.out.println("55555555555555555555555555555555555"+toInjectTo+"-----------------------------------------------");
         String jsPath = proxy_instance.getJsInjectPath();
         File file = new File(jsPath);
         FileInputStream jsFileInputStream;

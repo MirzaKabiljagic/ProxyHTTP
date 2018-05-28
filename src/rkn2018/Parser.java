@@ -15,6 +15,11 @@ public class Parser {
     }
 
     private String method;
+
+    public String getHelper_response() {
+        return helper_response;
+    }
+
     private String helper_response;
 
     public static final int HOST = 1;
@@ -30,6 +35,10 @@ public class Parser {
     private boolean parsed = false;
     private boolean isParsed;
     public String new_port;
+
+    public HashMap<String, String> getHeader_response() {
+        return header_response;
+    }
 
     private HashMap<String, String> header_response;
 
@@ -155,8 +164,8 @@ public class Parser {
                         else
                             header_response.put(arrayParser[0], arrayParser[1]);
                     }
-                    else
-                        System.out.println("Size of arrayParser bigger than 2 and is: " + arrayParser.length);
+                    //else
+                       // System.out.println("Size of arrayParser bigger than 2 and is: " + arrayParser.length);
                 }
                 count++;
             }
@@ -164,7 +173,7 @@ public class Parser {
             isParsed = true;
 
             //main print for testing
-            System.out.println(requestResponse + "    " + helper_response);
+           // System.out.println(requestResponse + " ------------------------------------------------------------   " + helper_response);
 
 
 
@@ -273,7 +282,21 @@ public class Parser {
     //******************************************************************************************************************
     public byte[] headerOrBodyReturn(byte[] input, boolean headerOrBody)
     {
-        byte[] headerBody;
+        if(!headerOrBody) {
+            int headerEndIndex = 0;
+            for (; headerEndIndex < input.length - 3; headerEndIndex++) {
+                if (input[headerEndIndex] == 13 &&
+                        input[headerEndIndex + 1] == 10 &&
+                        input[headerEndIndex + 2] == 13 &&
+                        input[headerEndIndex + 3] == 10) {
+                    headerEndIndex += 3;
+                    break;
+                }
+            }
+            return Arrays.copyOfRange(input, headerEndIndex + 1, input.length);
+        }
+
+        //byte[] headerBody = new byte[];
         int i;
         for(i = 0; i < input.length - 3; i++)
         {
@@ -290,14 +313,11 @@ public class Parser {
         //When headerOrBody = true then header return otherwise return body
         if(headerOrBody)
         {
-            headerBody = Arrays.copyOfRange(input, 0, i + 1);
-        }
-        else
-        {
-            headerBody = Arrays.copyOfRange(input, i + 1, input.length);
+            byte[] headerBody = Arrays.copyOfRange(input, 0, i + 1);
+            return  headerBody;
         }
 
-        return  headerBody;
+        return  null;
     }
     //******************************************************************************************************************
 
@@ -330,7 +350,7 @@ public class Parser {
             }
         }
 
-        return  "UTF-8";
+        return  encoding;//"UTF-8";
     }
 
     //******************************************************************************************************************
@@ -343,7 +363,9 @@ public class Parser {
         }
         return  false;
     }
-};
+
+
+}
 
 
 
