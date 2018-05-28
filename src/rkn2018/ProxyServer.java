@@ -61,7 +61,7 @@ public class ProxyServer extends Thread{
                     //plugins
                     plugins(parse, BodyReturn, HeaderReturn);
                     if(!transferPlugin)
-                       return;
+                        return;
 
                     if (ProxyClient.statusCheck(parse))
                         break;
@@ -95,7 +95,7 @@ public class ProxyServer extends Thread{
         if(!transferPlugin)
             return;
 */
-       try
+        try
         {
             toClient.write(outputStream.toByteArray(), 0, outputStream.size());
             toClient.flush();
@@ -186,7 +186,7 @@ public class ProxyServer extends Thread{
     //******************************************************************************************************************
     public byte[] replaceContent(Parser parse__, byte[] replaceBody_)
     {
-        
+
 
         String replacedContent = "";
         String encoding = parse__.getEncoding();
@@ -319,10 +319,10 @@ public class ProxyServer extends Thread{
                 e.printStackTrace();
             }
         } else
-            {
-                //System.out.println("=================================================================================");
+        {
+            //System.out.println("=================================================================================");
             toInjectTo = new String(replaceBody_);
-                //return null;
+            //return null;
         }
         //System.out.println("55555555555555555555555555555555555"+toInjectTo+"-----------------------------------------------");
         String jsPath = proxy_instance.getJsInjectPath();
