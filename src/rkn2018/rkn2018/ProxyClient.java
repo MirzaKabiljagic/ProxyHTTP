@@ -31,7 +31,7 @@ class ProxyClient extends Thread {
         this.SocketClient = SocketClient_;
     }
 
-
+    //******************************************************************************************************************
     //timeout for sockets
     public void setTimeOut(Socket timeout_) {
         try {
@@ -41,7 +41,7 @@ class ProxyClient extends Thread {
         }
 
     }
-
+    //******************************************************************************************************************
     //Client and server socket closing
     public void closeConnection() {
         try {
@@ -63,7 +63,7 @@ class ProxyClient extends Thread {
         }
 
     }
-
+    //******************************************************************************************************************
     @Override
     public void run() {
 
@@ -96,7 +96,7 @@ class ProxyClient extends Thread {
                 }
 
                 byte[] parseArray = outputStream.toByteArray();
-                parse.startParse(parseArray);
+                parse.startParse(parseArray, "request");
 
                 //flag checking for parsing
                 if (parse.getParsed() == true) {

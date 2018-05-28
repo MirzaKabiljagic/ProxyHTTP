@@ -1,5 +1,8 @@
 package rkn2018;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,26 +38,47 @@ public class PluginHelper {
         return returnCookies;
     }
     //******************************************************************************************************************
-    String contentLengthSetting(String input, int length)
+    String contentLengthSetting(String input, int length, String encodingValue_)
     {
-        String[] parsed = input.split("\r\n");
+        //first we need to remove chunks in order to set content length
+        byte[] stringByteWithoutChunks = new byte[1000000];
         String returnString = "";
-
+        String[] parsed = input.split("\r\n");
         for(int i = 0; i < parsed.length; i++)
         {
-
-            //set every time
-            if(parsed[i].contains("Content-Length"))
-                continue;
-
-            returnString += parsed[i] + "\r\n";
-
-
+            if(!parsed[i].contains("Transfer-Encoding") ||
+                    !parsed[i].contains("Content-Length"))
+            {
+                returnString += parsed[i] + "\r\n";
+            }
         }
-        returnString += "Content-Length: " + length + "\r\n";
         returnString += "\r\n";
 
-        return returnString;
+        try {
+            stringByteWithoutChunks = returnString.getBytes(encodingValue_);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Can not convert string to byte array");
+            e.printStackTrace();
+        }
+
+        String[] parsed_withoutChunks = new String(stringByteWithoutChunks).split("\r\n");
+        String stringWithoutChunks = "";
+
+        //then add content-length
+        for(int i = 0; i < parsed_withoutChunks.length; i++)
+        {
+            //set every time
+            if(parsed_withoutChunks[i].contains("Content-Length"))
+                continue;
+            stringWithoutChunks += parsed[i] + "\r\n";
+
+        }
+        stringWithoutChunks += "Content-Length: " + length + "\r\n";
+        stringWithoutChunks += "\r\n";
+
+        return stringWithoutChunks;
     }
 
     //******************************************************************************************************************
@@ -68,6 +92,7 @@ public class PluginHelper {
             //change content_length if it exists
             if(parsed[i].contains("Content-Length"))
             {
+                //System.out.println("Changed length from " + parsed[i] +  " to " + length);
                 returnString += "Content-Length: " + length + "\r\n";
             }
             else
@@ -78,20 +103,5 @@ public class PluginHelper {
 
         return returnString;
     }
-    //******************************************************************************************************************
-    String removeChunks(String input)
-    {
-        String returnString = "";
-        String[] parsed = input.split("\r\n");
-        for(int i = 0; i < parsed.length; i++)
-        {
-            if(!parsed[i].contains("Transfer-Encoding") ||
-                    !parsed[i].contains("Content-Length"))
-            {
-                returnString += parsed[i] + "\r\n";
-            }
-        }
-        returnString += "\r\n";
-        return returnString;
-    }
+
 }

@@ -27,7 +27,7 @@ public class ProxyServer extends Thread{
         this.connected = connected_;
         this.proxy_instance = proxy_instance_;
     }
-
+    //******************************************************************************************************************
     @Override
     public void run() {
         Parser parse = new Parser();
@@ -49,11 +49,10 @@ public class ProxyServer extends Thread{
 
                 byte[] parseArray = outputStream.toByteArray();
                 //start parsing
-                parse.startParse(parseArray);
+                parse.startParse(parseArray, "response");
 
                 //if whole data is parsed break
                 if (parse.getParsed() == true) {
-
 
                     byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
                     byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
@@ -62,10 +61,8 @@ public class ProxyServer extends Thread{
                     if(!transferPlugin)
                        return;
 
-
                     if (ProxyClient.statusCheck(parse))
                         break;
-
 
                     parse = new Parser();
                     outputStream.close();
@@ -82,7 +79,7 @@ public class ProxyServer extends Thread{
             e.printStackTrace();
         }
 
-         try
+       try
         {
             toClient.write(outputStream.toByteArray(), 0, outputStream.size());
             toClient.flush();
@@ -102,11 +99,11 @@ public class ProxyServer extends Thread{
     {
         //Plugin3
         PluginHelper helper = new PluginHelper(proxy_instance);
-
         //add cookies
         HeaderReturn_ = helper.addCookies(new String(HeaderReturn_)).getBytes();
 
         String contentTypeValue = parse_.valuesFromField().get(parse_.CONTENT_TYPE);
+
         if(contentTypeValue != null) {
             String[] parsedValues = contentTypeValue.split(";");
 
@@ -125,21 +122,15 @@ public class ProxyServer extends Thread{
             }
 
             if (htmlExists) {
+                //System.out.println("ispod html");
 
-                try {
-                    BodyReturn_ = replaceContent(parse_, BodyReturn_);
-                    if (checkChunk(parse_)) {
-                        String encodingValue = parse_.getEncoding();
-                        HeaderReturn_ = helper.removeChunks(new String(HeaderReturn_)).getBytes(encodingValue);
-                        HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length).getBytes();
-                    } else {
-                        HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
-                    }
-
-                } catch (IOException e) {
-                    System.out.println("Can not replace content");
-                    e.printStackTrace();
+                BodyReturn_ = replaceContent(parse_, BodyReturn_);
+                if (checkChunk(parse_)) {
+                    String encodingValue = parse_.getEncoding();
+                    HeaderReturn_ = helper.contentLengthSetting(new String(HeaderReturn_), BodyReturn_.length, encodingValue).getBytes();
                 }
+                else
+                    HeaderReturn_ = helper.editContentLength(new String(HeaderReturn_), BodyReturn_.length).getBytes();
 
             }
         }

@@ -5,6 +5,8 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.nio.charset.StandardCharsets;
+import java.nio.charset.StandardCharsets;
 
 
 public class Parser {
@@ -44,18 +46,18 @@ public class Parser {
         new_port = "";
         setNewPort = false;
     }
-
+    //******************************************************************************************************************
     public String getMethod() { return method; }
-
+    //******************************************************************************************************************
     public boolean getParsed() { return parsed; }
-
+    //******************************************************************************************************************
     public boolean isParsed(){ return isParsed; }
-
+    //******************************************************************************************************************
     public boolean isSetNewPort()
     {
         return  setNewPort;
     }
-
+    //******************************************************************************************************************
     public int getNew_port() {
 
         new_port = new_port.replaceAll("\\s+", "");
@@ -113,7 +115,7 @@ public class Parser {
         return false;
     }
     //******************************************************************************************************************
-    public void startParse(byte[] inputClient)
+    public void startParse(byte[] inputClient, String requestResponse)
             throws IOException
     {
         System.out.println(inputClient);
@@ -164,6 +166,11 @@ public class Parser {
             }
             helper_response += newline;
             isParsed = true;
+
+            //main print for testing
+            System.out.println(requestResponse + "    " + helper_response);
+
+
 
             FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
 
