@@ -16,7 +16,12 @@ import org.apache.commons.cli.ParseException;
 public class Proxy {
 	protected final String dumpPath;
 	protected final Map<String, String> contentReplacements, headerReplacements, redirections;
-	public static String jsInjectPath;
+
+	public String getJsInjectPath() {
+		return jsInjectPath;
+	}
+
+	protected final String jsInjectPath;
 	protected final List<String> stripDomains;
 	protected final String mitmCertificatePath;
 	protected final boolean sopSwitch;
@@ -41,6 +46,7 @@ public class Proxy {
 
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
+		contentReplacements.put("[0-9]","X");
 		ProxyConnection proxyConnection;
 		proxyConnection = new ProxyConnection(this);
 		System.out.println("Starting the connection");
