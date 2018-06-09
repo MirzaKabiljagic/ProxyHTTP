@@ -3,6 +3,7 @@ package rkn2018;
 import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Parser {
 
@@ -35,11 +36,13 @@ public class Parser {
     private boolean isParsed;
     public String new_port;
 
-    public HashMap<String, String> getHeader_response() {
+    private Map<String, String> header_response;
+
+
+    public Map<String, String> getHeader_response() {
         return header_response;
     }
 
-    private HashMap<String, String> header_response;
 
     Parser()
     {
@@ -183,20 +186,22 @@ public class Parser {
                 FileWriter.caller.inputData("--------------------------------------------------------------------------------\n");
             }
 
-            if(contentLenCheck(inputClient)){
-                parsed = true;
-            }
-            else if(chunkedCheck(inputClient)){
-                parsed = true;
-            }
-            else if(checkEnd(inputClient)){
-                parsed = true;
-            }
-
-            else
-                parsed = false;
-            System.out.println("Finishing with parsing!");
         }
+
+        if(contentLenCheck(inputClient))
+        {
+            parsed = true;
+        }
+        else if(chunkedCheck(inputClient)){
+            parsed = true;
+        }
+        else if(checkEnd(inputClient)){
+            parsed = true;
+        }
+        else
+            parsed = false;
+
+
     }
     //******************************************************************************************************************
     public HashMap<Integer, String>valuesFromField()
@@ -295,7 +300,7 @@ public class Parser {
                     input[i + 1] == 10 &&
                     input[i] == 13)
             {
-                i = input.length -3;
+                i += 3;
                 break;
             }
         }
@@ -321,6 +326,7 @@ public class Parser {
         {
             holder[i] = i < h.length ? h[i] : b[i - h.length];
         }
+
         return holder;
     }
     //******************************************************************************************************************
@@ -330,12 +336,14 @@ public class Parser {
         String encoding = valuesFromField().get(CONTENT_TYPE);
         if(encoding != null)
         {
+            encoding = encoding.replaceAll("\\s+", "");
+
             String[] parsed = encoding.split(";");
 
             //find value of char-set
-            for(int i = 0; i < parsed.length; i++)
+            for(String s: parsed)
             {
-               String[] parsed_parsed = parsed[i].split("=");
+               String[] parsed_parsed = s.split("=");
 
                if(parsed_parsed.length == 2 && parsed_parsed[0].equalsIgnoreCase("charset"))
                {

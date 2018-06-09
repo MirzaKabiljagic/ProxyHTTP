@@ -172,6 +172,8 @@ class ProxyClient extends Thread {
                     if (connected) {
                         continue;
                     }
+
+
                     try {
                         System.out.println("Write and flush");
                         toServer.write(outputStream.toByteArray(), OFF_TRIGGER, outputStream.toByteArray().length);
@@ -182,15 +184,14 @@ class ProxyClient extends Thread {
                         closeConnection();
                         return;
                     }
+                    if (statusCheck(parse) == true )
+                        break;
+
+                    parse = new Parser();
+                    outputStream.close();
+                    outputStream = new ByteArrayOutputStream();
                 }
-
-                if (statusCheck(parse) == true )
-                    break;
-
-                parse = new Parser();
-                outputStream.close();
-                outputStream = new ByteArrayOutputStream();
-            }
+                }
 
         }
         catch(IOException e)

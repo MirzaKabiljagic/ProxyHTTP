@@ -8,27 +8,31 @@ import java.util.Set;
 
 public class PluginHelper {
 
-    private HashMap<String, String> helperMap = new HashMap<>();
+   Proxy proxy_instance;
+    private Map<String, String> helperMap = new HashMap<>();
     //******************************************************************************************************************
     PluginHelper(Proxy proxy_instance_)
     {
-        this.helperMap = new HashMap<>(proxy_instance_.getReplacements());
+        proxy_instance = proxy_instance_;
     }
     //******************************************************************************************************************
     String addCookies(String input)
     {
+        Map<String, String> headerReplacements = new HashMap<>(proxy_instance.getHeaderReplacements());
+
+
         String[] parsed = input.split("\r\n");
         String returnCookies = "";
-        for(int i = 0; i != parsed.length; i++)
+        for(int i = 0; i < parsed.length; i++)
         {
             returnCookies = returnCookies + parsed[i] + "\r\n";
         }
 
         for(Map.Entry<String,String> it : helperMap.entrySet())
         {
-            if(it.getKey().contains("Set-Cookie"))
+            if(it.getKey().startsWith("Set-Cookie"))
             {
-                returnCookies = returnCookies + it.getKey() + ": " + it.getValue();
+                returnCookies = returnCookies + it.getKey() + ": " + it.getValue() +  "\r\n";
             }
 
         }
@@ -50,6 +54,7 @@ public class PluginHelper {
                 returnString += parsed[i] + "\r\n";
             }
         }
+
         returnString += "\r\n";
 
         try {
@@ -73,6 +78,7 @@ public class PluginHelper {
             stringWithoutChunks += parsed[i] + "\r\n";
 
         }
+
         stringWithoutChunks += "Content-Length: " + length + "\r\n";
         stringWithoutChunks += "\r\n";
 

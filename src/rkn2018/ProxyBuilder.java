@@ -27,7 +27,7 @@ public class ProxyBuilder {
 	}
 	
 	public ProxyBuilder setContentReplacements(String[] replacements) {
-		putValuesToMap(replacements, contentReplacements, "^");
+		putValuesToMap(replacements, contentReplacements, "\\^");
 		return this;
 	}
 	
@@ -66,7 +66,11 @@ public class ProxyBuilder {
 			for (int i = 0; i < arr.length; i ++) {
 				String[] sp = arr[i].split(separator);
 				if (sp.length == 2)
+				{
+					System.out.println("uso sam");
 					map.put(sp[0], sp[1]);
+				}
+
 			}
 		}
 	}

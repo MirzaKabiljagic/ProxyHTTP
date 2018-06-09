@@ -65,6 +65,8 @@ public class Proxy {
 		}
 	}
 
+
+
 	public static void main(String[] args) throws Exception {
 		Options options = new Options();
 		options.addOption("help", "print this message");
@@ -138,4 +140,13 @@ public class Proxy {
 			formatter.printHelp("proxy", options);
 		}
 	}
+
+	public Map<String, String> getHeaderReplacements() {
+		return headerReplacements;
+	}
+
+	public Map<String,String> getContentReplacements() {
+		return contentReplacements;
+	}
+
 }
