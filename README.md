@@ -14,4 +14,12 @@ The main problem in this class was startParse() method. First "if condition" ran
     * Called JSInject() function correctly only when content_type is html
     * Fixed compress html_Body back to Gzip.	
 
+## New Implementations
 
+* Script for testing of "Inject a JavaScript code"
+* P5 - Phishing in the dark
+  <br>
+  In Proxy client we call a method redirect, which replaces the host, whom we previously parsed. After we add carriage return line feed to the header and return it. 
+  
+  
+ 
