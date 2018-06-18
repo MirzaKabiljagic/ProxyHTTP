@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 
 class ProxyClient extends Thread {
@@ -173,10 +174,42 @@ class ProxyClient extends Thread {
                         continue;
                     }
 
+                    String encoding = parse.getEncoding();
+                    encoding = encoding == null ? "UTF-8" : encoding;
+
+                    HashMap<Integer, String> map = new HashMap<>();
+                    map = parse.valuesFromField();
+
+                    String host = map.get(Parser.HOST);
+
+                    byte[] requestingHeader = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
+
+                    PluginHelper help  = new PluginHelper(proxy_instance);
+
+                    /*if(!proxy_instance.headerReplacements.isEmpty())
+                    {
+                        requestingHeader = help.replaceHeader(requestingHeader, proxy_instance.getHeaderReplacements(), 1);
+                    }*/
+
+                    if(!proxy_instance.redirections.isEmpty())
+                    {
+                        for (Map.Entry<String, String> entry : proxy_instance.redirections.entrySet()) {
+
+                            if(entry.getKey().contains(host))
+                            {
+                                requestingHeader = help.redirect(entry.getKey(), entry.getValue(),requestingHeader);
+                            }
+                        }
+                    }
+
+
+                    byte[] clientRequestBody = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
+
+                    byte[] fusedContent = parse.mergeHB(requestingHeader,clientRequestBody);
 
                     try {
                         System.out.println("Write and flush");
-                        toServer.write(outputStream.toByteArray(), OFF_TRIGGER, outputStream.toByteArray().length);
+                        toServer.write(fusedContent, OFF_TRIGGER,fusedContent.length);
                         toServer.flush();
                     } catch (IOException e) {
                         System.out.println("Can't reach data from server!");
@@ -191,7 +224,7 @@ class ProxyClient extends Thread {
                     outputStream.close();
                     outputStream = new ByteArrayOutputStream();
                 }
-                }
+             }
 
         }
         catch(IOException e)

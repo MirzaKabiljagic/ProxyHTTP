@@ -19,6 +19,7 @@ public class ProxyServer extends Thread{
     public boolean transferPlugin = false;
     //empty constructor
     ProxyServer(){}
+    private PluginHelper helper;
 
     //constructor for input and output stream
     ProxyServer(InputStream fromServer_, OutputStream toClient_, boolean connected_, Proxy proxy_instance_)
@@ -66,11 +67,20 @@ public class ProxyServer extends Thread{
                         if(!transferPlugin)
                             return;
                     }
+
+                   if(!proxy_instance.headerReplacements.isEmpty())
+                    {
+                        plugins(HeaderReturn,BodyReturn,parse);
+                        if(!transferPlugin)
+                            return;
+                    }
+
                     else
                     {
+
                         try
                         {
-                            toClient.write(outputStream.toByteArray(), 0, outputStream.size());
+                            toClient.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
                             toClient.flush();
                         }
 
@@ -138,6 +148,9 @@ public class ProxyServer extends Thread{
                         if(!proxy_instance.getContentReplacements().isEmpty()) {
                             BodyReturn = replaceContent(parser, BodyReturn);
                         }
+                        /*if(!proxy_instance.getHeaderReplacements().isEmpty()){
+                            HeaderReturn = helper.replaceHeader(HeaderReturn, proxy_instance.getHeaderReplacements(), 0);
+                        }*/
 
                         if(checkChunk(parser))
                             HeaderReturn = helper.contentLengthSetting(new String(HeaderReturn), BodyReturn.length, encodingValue).getBytes(encodingValue);

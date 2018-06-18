@@ -16,10 +16,6 @@ public class Parser {
 
     private String method;
 
-    public String getHelper_response() {
-        return helper_response;
-    }
-
     private String helper_response;
 
     public static final int HOST = 1;
@@ -30,6 +26,7 @@ public class Parser {
     public static final int TRANSFER_ENCODING = 6;
     public static int lengthOfChunk = 0;
     public static int indexOfLF = -1;
+    public static final String CRLF = "\r\n";
 
     public boolean setNewPort;
     private boolean parsed = false;
@@ -37,11 +34,6 @@ public class Parser {
     public String new_port;
 
     private Map<String, String> header_response;
-
-
-    public Map<String, String> getHeader_response() {
-        return header_response;
-    }
 
 
     Parser()
@@ -318,9 +310,11 @@ public class Parser {
         return  headerBody;
 
     }
+
     //******************************************************************************************************************
 
     public  byte[] mergeHB(byte[] h, byte[] b) {
+
         byte[] holder = new byte[h.length + b.length];
         for (int i = 0; i < holder.length; ++i)
         {

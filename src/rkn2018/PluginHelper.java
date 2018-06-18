@@ -1,10 +1,7 @@
 package rkn2018;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class PluginHelper {
 
@@ -108,4 +105,29 @@ public class PluginHelper {
         return returnString;
     }
 
+
+    public byte[] redirect(String currentHost, String replacingHost, byte[] inputStream) {
+
+        String header = new String(inputStream);
+        String[] header_lines = header.split("\n");
+        ArrayList<String> tempHeader = new ArrayList<String>(Arrays.asList(Arrays.copyOf(header_lines, header_lines.length - 1)));
+        ArrayList<String> parsedHeader = new ArrayList<String>(Arrays.asList(Arrays.copyOf(header_lines, header_lines.length - 1)));
+
+        int sizeOfHeaderList = tempHeader.size();
+        int iterator = 0;
+        while(iterator<sizeOfHeaderList)
+        {
+            if(tempHeader.get(iterator).contains(currentHost))
+            {
+                tempHeader.set(iterator, tempHeader.get(iterator).replace(currentHost, replacingHost));
+                parsedHeader = tempHeader;
+            }
+            iterator +=1;
+        }
+
+        parsedHeader.add(Parser.CRLF);
+        header = String.join("\n", parsedHeader);
+
+        return header.getBytes();
+    }
 }

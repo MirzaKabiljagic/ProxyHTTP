@@ -48,6 +48,7 @@ public class Proxy {
 		return contentReplacements;
 	}
 
+
 	public void runProxy() throws Exception {
 		// TODO: This is the starting point of your proxy implementation
 		//contentReplacements.put("[0-9]","X");
@@ -142,7 +143,7 @@ public class Proxy {
 	}
 
 	public Map<String, String> getHeaderReplacements() {
-		return headerReplacements;
+		return this.headerReplacements;
 	}
 
 	public Map<String,String> getContentReplacements() {

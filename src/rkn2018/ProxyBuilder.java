@@ -37,7 +37,7 @@ public class ProxyBuilder {
 	}
 	
 	public ProxyBuilder setRedirections(String[] redirections) {
-		putValuesToMap(redirections, this.redirections, "^");
+		putValuesToMap(redirections, this.redirections, "\\^");
 		return this;
 	}
 	
@@ -67,7 +67,6 @@ public class ProxyBuilder {
 				String[] sp = arr[i].split(separator);
 				if (sp.length == 2)
 				{
-					System.out.println("uso sam");
 					map.put(sp[0], sp[1]);
 				}
 
