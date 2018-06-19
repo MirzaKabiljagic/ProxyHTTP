@@ -186,10 +186,10 @@ class ProxyClient extends Thread {
 
                     PluginHelper help  = new PluginHelper(proxy_instance);
 
-                    /*if(!proxy_instance.headerReplacements.isEmpty())
+                    if(!proxy_instance.headerReplacements.isEmpty())
                     {
-                        requestingHeader = help.replaceHeader(requestingHeader, proxy_instance.getHeaderReplacements(), 1);
-                    }*/
+                        requestingHeader = help.headerModifier(requestingHeader,proxy_instance.getHeaderReplacements(),0);
+                    }
 
                     if(!proxy_instance.redirections.isEmpty())
                     {

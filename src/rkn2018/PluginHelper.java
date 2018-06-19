@@ -109,7 +109,8 @@ public class PluginHelper {
     public byte[] redirect(String currentHost, String replacingHost, byte[] inputStream) {
 
         String header = new String(inputStream);
-        String[] header_lines = header.split("\n");
+        String[] header_lines;
+        header_lines = header.split("\n");
         ArrayList<String> tempHeader = new ArrayList<String>(Arrays.asList(Arrays.copyOf(header_lines, header_lines.length - 1)));
         ArrayList<String> parsedHeader = new ArrayList<String>(Arrays.asList(Arrays.copyOf(header_lines, header_lines.length - 1)));
 
@@ -130,4 +131,66 @@ public class PluginHelper {
 
         return header.getBytes();
     }
+    public byte[] headerModifier(byte[] parsedHeader, Map<String, String> modifyMap, int trigger) {
+
+        String newHeader = new String(parsedHeader);
+        String[] listOfHeaders;
+        listOfHeaders = newHeader.split("\n");
+        ArrayList<String> spHeader = new ArrayList<String>(Arrays.asList(Arrays.copyOf(listOfHeaders, listOfHeaders.length - 1)));
+        ArrayList<String> tempHeaderList = new ArrayList<String>(Arrays.asList(Arrays.copyOf(listOfHeaders, listOfHeaders.length - 1)));
+        int counter = 0;
+
+        for (Map.Entry<String, String> entry : modifyMap.entrySet()) {
+            boolean checkIfP = false;
+            int sizeOfHeader = spHeader.size();
+
+            while(counter<sizeOfHeader)
+            {
+                if(spHeader.get(counter).split(":")[0].equals(entry.getKey()) && !entry.getKey().equals("Set-Cookie") && trigger == 1)
+                {
+                    spHeader.set(counter, entry.getKey() + ": " + entry.getValue());
+                    checkIfP = true;
+                    break;
+                }
+                counter++;
+            }
+
+            if(checkIfP==false)
+            {
+                if(trigger == 1 && !entry.getKey().equals("Set-Cookie"))
+                {
+                    spHeader.add(entry.getKey() + ": " + entry.getValue());
+                }
+                else if(trigger == 0 && entry.getKey().equals("Set-Cookie"))
+                {
+                    spHeader.add(entry.getKey() + ": " + entry.getValue());
+                }
+            }
+        }
+        spHeader.add(Parser.CRLF);
+        newHeader = String.join("\n", spHeader);
+
+        return newHeader.getBytes();
+    }
+
+    public byte[] sop(byte[] header)
+             {
+        String mainHead = new String(header);
+
+        String[] newline = mainHead.split(Parser.CRLF);
+        String header_changed = "";
+        for (String line : newline) {
+            if(line.startsWith("Access-Control-Allow-Origin"))
+                continue;
+
+            header_changed = header_changed+ line + Parser.CRLF;
+        }
+
+        header_changed = header_changed+ "Access-Control-Allow-Origin: *" + Parser.CRLF;
+        header_changed = header_changed+ Parser.CRLF;
+
+        return header_changed.getBytes();
+    }
+
+
 }

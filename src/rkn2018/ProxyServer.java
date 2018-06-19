@@ -59,7 +59,6 @@ public class ProxyServer extends Thread{
                     byte[] BodyReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), false);
                     byte[] HeaderReturn = parse.headerOrBodyReturn(outputStream.toByteArray(), true);
                     //plugins
-                    //plugins(HeaderReturn , BodyReturn, parse);
                     if(!proxy_instance.getContentReplacements().isEmpty() ||
                             !proxy_instance.getJsInjectPath().isEmpty())
                     {
@@ -68,7 +67,7 @@ public class ProxyServer extends Thread{
                             return;
                     }
 
-                   if(!proxy_instance.headerReplacements.isEmpty())
+                    if(!proxy_instance.headerReplacements.isEmpty() || proxy_instance.sopSwitch)
                     {
                         plugins(HeaderReturn,BodyReturn,parse);
                         if(!transferPlugin)
@@ -77,7 +76,6 @@ public class ProxyServer extends Thread{
 
                     else
                     {
-
                         try
                         {
                             toClient.write(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
@@ -88,7 +86,6 @@ public class ProxyServer extends Thread{
                             System.out.println("It is not possible to transfer data to client");
                         }
                     }
-
 
                     if (ProxyClient.statusCheck(parse))
                         break;
@@ -148,15 +145,26 @@ public class ProxyServer extends Thread{
                         if(!proxy_instance.getContentReplacements().isEmpty()) {
                             BodyReturn = replaceContent(parser, BodyReturn);
                         }
-                        /*if(!proxy_instance.getHeaderReplacements().isEmpty()){
-                            HeaderReturn = helper.replaceHeader(HeaderReturn, proxy_instance.getHeaderReplacements(), 0);
-                        }*/
 
-                        if(checkChunk(parser))
+
+                        if(checkChunk(parser)) {
                             HeaderReturn = helper.contentLengthSetting(new String(HeaderReturn), BodyReturn.length, encodingValue).getBytes(encodingValue);
-                        else
+                            if(!proxy_instance.getHeaderReplacements().isEmpty()){
+                                HeaderReturn = helper.headerModifier(HeaderReturn,proxy_instance.getHeaderReplacements(), 0);
+                            }
+                            if(proxy_instance.sopSwitch){
+                                HeaderReturn = helper.sop(HeaderReturn);
+                            }
+                        }
+                        else {
                             HeaderReturn = helper.editContentLength(new String(HeaderReturn), BodyReturn.length).getBytes(encodingValue);
-
+                            if(!proxy_instance.getHeaderReplacements().isEmpty()){
+                                HeaderReturn = helper.headerModifier(HeaderReturn,proxy_instance.getHeaderReplacements(), 0);
+                            }
+                            if(proxy_instance.sopSwitch){
+                                HeaderReturn = helper.sop(HeaderReturn);
+                            }
+                        }
 
                     }
                     catch (IOException e) {
