@@ -20,6 +20,11 @@ The main problem in this class was startParse() method. First "if condition" ran
 * P5 - Phishing in the dark
   <br>
   In Proxy client we call a method redirect, which replaces the host, whom we previously parsed. After we add carriage return line feed to the header and return it. 
-  
+* P1 - Improved Requests
+  <br>
+  Added a function which enables adding our own cookie.
+  <br>
+  Added SOP function.
+    
   
  
