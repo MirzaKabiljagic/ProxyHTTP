@@ -27,7 +27,7 @@ public class ProxyBuilder {
 	}
 	
 	public ProxyBuilder setContentReplacements(String[] replacements) {
-		putValuesToMap(replacements, contentReplacements, "\\^");
+		putValuesToMap(replacements, contentReplacements, "^");
 		return this;
 	}
 	
@@ -37,7 +37,7 @@ public class ProxyBuilder {
 	}
 	
 	public ProxyBuilder setRedirections(String[] redirections) {
-		putValuesToMap(redirections, this.redirections, "\\^");
+		putValuesToMap(redirections, this.redirections, "^");
 		return this;
 	}
 	
